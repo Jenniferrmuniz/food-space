@@ -57,4 +57,19 @@ router.post('/logout', (req, res, next) => {
     res.redirect('/');
 })
 
+
+
+
+router.get('/profile', (req, res, next)=>{
+
+    if(req.user){
+        res.render('users/profile', {theUser: req.user})
+    } else{
+        res.redirect('/')
+    }
+})
+
+
+
+
 module.exports = router;
