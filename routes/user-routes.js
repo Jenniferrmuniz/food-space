@@ -36,4 +36,25 @@ router.post('/signup', (req, res, next) => {
 })
 
 
+
+router.get('/login', (req, res, next) => {
+    res.render('users/login');
+})
+
+
+router.post("/login", passport.authenticate("local", {
+    successRedirect: "/",
+    failureRedirect: "/users/login",
+    failureFlash: true,
+    passReqToCallback: true
+}));
+
+
+
+router.post('/logout', (req, res, next) => {
+
+    req.logout();
+    res.redirect('/');
+})
+
 module.exports = router;
