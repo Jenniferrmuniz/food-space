@@ -159,5 +159,7 @@ app.use('/', index);
 const user = require('./routes/user-routes');
 app.use('/', user);
 
+const upload = require('./routes/upload-pics');
+app.use('/', upload);
 
 module.exports = app;

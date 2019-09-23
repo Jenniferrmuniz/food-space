@@ -7,6 +7,10 @@ const bcrypt = require('bcryptjs');
 const passport = require('passport');
 
 
+const multer  = require('multer');
+const Picture = require('../models/picture-model');
+
+
 
 
 router.get('/signup', (req, res, next) => {
