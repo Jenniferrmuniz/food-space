@@ -3,6 +3,7 @@ const Schema = mongoose.Schema;
 
 const recipeSchema = new Schema({
 
+  author: {type: Schema.Types.ObjectId, ref: 'User'},
   name: String,
   description: String,
   image: String, //(image upload from breakout session W5D4)

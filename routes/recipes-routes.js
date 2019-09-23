@@ -1,11 +1,39 @@
 const express = require('express');
 const router = express.Router();
 
-const Recipe = require('../models/Recipe')
+const Recipe = require('../models/Recipe');
+const axios = require('axios');
+
+
+function getRecipesFromAPI() {
+  axios.get('https://api.spoonacular.com/recipes/search?query=burger&number=2')
+    .then((res) => {
+
+      console.log(res);
+
+
+    })
+
+}
+
+
+router.get('/randomRecipe', (req, res, next) => {
+  axios.get('https://api.spoonacular.com/recipes/search?query=burger&number=2', { headers: { "X-RapidAPI-Key": process.env.API_KEY } })
+    .then((res) => {
+
+      console.log(res);
+
+
+    })
+    .catch((err) => {
+      next(err);
+    })
+})
+
 
 /* GET home page */
 router.get('/', (req, res, next) => {
-  
+
 
   //error message to login
   // if(!req.user){
