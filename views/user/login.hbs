@@ -1,0 +1,34 @@
+<div class='welcome'>
+  <h1>FoodSpace</h1>
+  <p>Who's hungry?!</p>
+</div>
+
+
+<form action="/user/login" method="POST" id="login-form">
+  <h2>Login</h2>
+
+  <label for="username">Username</label>
+  <input type="text" name="username">
+
+  <label for="password">Password</label>
+  <input type="password" name="password">
+
+
+  {{!-- {{#if message}}
+  <div class="error-message">{{ message }}</div>
+  {{/if}} --}}
+
+  <button type='submit'>Login</button>
+
+{{!-- google login if we want to add later --}}
+
+  {{!-- {{#unless user}}
+  <div>
+    <a href="/user/auth/google">Login With Google</a>
+  </div>
+  {{/unless}} --}}
+
+  <p class="account-message">
+    Don't have an account? <a href="/user/signup">Sign up</a>
+  </p>
+</form>

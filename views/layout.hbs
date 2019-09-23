@@ -21,16 +21,31 @@
       <li class="nav-item">
         <a class="nav-link" href="/">Home</a>
       </li>
+
+
+      <li class="nav-item dropdown">
+        <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+          Recipes
+        </a>
+        <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
+          <a class="dropdown-item" href="/recipes">List of Recommended Recipes</a>
+        </div>
+      </li>
+
+
+
       <li class="nav-item dropdown">
         <a class="nav-link dropdown-toggle" href="#" id="navbarDropdownMenuLink" role="button" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
           Users
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
-          <a class="dropdown-item" href="/signup">Sign up</a>
-          <a class="dropdown-item" href="/login">Log in</a>
-          <a class="dropdown-item" href="#">Log out ( link not working yet )</a>
-          <a class="dropdown-item" href="/profile">Profile</a>
-
+          {{#if theUser}}
+          <a class="dropdown-item" href="/user/profile">Profile</a>
+          <a class="dropdown-item" href="/user/logout">Log out ( link not working yet )</a>
+          {{else}}
+          <a class="dropdown-item" href="/user/signup">Sign up</a>
+          <a class="dropdown-item" href="/user/login">Log in</a>
+          {{/if}}
         </div>
       </li>
     </ul>

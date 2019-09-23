@@ -1,8 +1,6 @@
-
-
 const express = require('express');
 const router = express.Router();
-const User = require('../models/user-model');
+const User = require('../models/User');
 const session = require("express-session");
 const MongoStore = require("connect-mongo")(session);
 const bcrypt = require('bcryptjs');
@@ -10,7 +8,7 @@ const passport = require('passport');
 
 
 const multer  = require('multer');
-const Picture = require('../models/picture-model');
+const Picture = require('../models/Picture');
 
 
 
