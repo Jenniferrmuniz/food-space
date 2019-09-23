@@ -31,7 +31,7 @@ router.post('/upload', upload.single('photo'), (req, res) => {
   });
 
   pic.save((err) => {
-      res.redirect('/');
+      res.redirect('/upload');
   });
 });
 
@@ -40,11 +40,15 @@ router.post('/upload', upload.single('photo'), (req, res) => {
 
 
 /* GET home page. */
-router.get('/', function(req, res, next) {
+router.get('/upload', function(req, res, next) {
+
     Picture.find((err, pictures) => {
-      res.render('index', {pictures})
+        console.log(pictures);
+      res.render('index', {pictures: pictures});
     })
   });
+
+
 
 
 
