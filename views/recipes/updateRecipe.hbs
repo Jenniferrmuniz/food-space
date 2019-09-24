@@ -1,27 +1,25 @@
 <h1> Update Recipe </h1>
 
-<form>
+<form action="/recipes/update/{{recipe._id}}" method='POST'>
+
+    <div>
+        <p>Edit Name</p>
+        <input type="text" name='theName' value="{{recipe.title}}">
 
 
-    <p>Title: </p>
-    <input type='text'>
+        <p>Edit Duration</p>
+        <input type="text" name='theDuration' value="{{recipe.duration}}">
 
 
-    <p>Instructions: </p>
-    <input type='text'>
+        <p>Edit Instructions</p>
+        <input type="text" name='theInstructions' value='{{recipe.instructions}}'>
 
 
-    <p>Image: </p>
-    <input>
+        {{!-- file upload added here --}}
+        <p>Edit Image</p>
+        <input type="text" name='theImage' value='{{recipe.image}}'>
+    </div>
 
-
-    <p>Duration: </p>
-    <input>
-
-
-
-    <p>Author: </p>
-    <input>
-    
+    <button type='submit'> Save </button>
 
 </form>
