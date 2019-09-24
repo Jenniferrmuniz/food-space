@@ -142,6 +142,9 @@ app.use('/user', userRoutes);
 const recipesRoutes = require('./routes/recipes-routes');
 app.use('/recipes', recipesRoutes);
 
+const commentRoutes = require('./routes/comment-routes');
+app.use('/comments', commentRoutes);
+
 const upload = require('./routes/upload-pics');
 app.use('/', upload);
 

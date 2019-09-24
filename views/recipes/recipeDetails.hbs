@@ -22,10 +22,25 @@
 </div>
 
 
-{{!-- {{#each comments}}
 
-{{#if commentChosen}}
-<p>{{this.author}}</p>
+{{#if theUser}}
+    <form action='/comments/recipe/{{recipe._id}}' method='POST'>
+        <input type='text' name='theComment'>
+        <input type='hidden' name='theAuthor' value='{{theUser._id}}'>
+        <input type='hidden' name='theRecipe' value='{{recipe._id}}'>
+        <button type='submit'>Submit comment</button>
+    </form>
 {{/if}}
 
-{{/each}} --}}
+{{#each comments}}
+{{#if this.chosen}}
+
+<p>{{this.comment}}</p>
+{{#each users}}
+{{#if this.commentChosen}}
+<p>{{this.author}}</p>
+{{/if}}
+{{/each}}
+{{/if}}
+{{/each}}
+
