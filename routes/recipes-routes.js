@@ -9,55 +9,53 @@ const unirest = require('unirest');
 
 
 
+// router.get('/randomRecipe', (req, res, next) => {
 
-router.get('/randomRecipe', (req, res, next) => {
+//   var req = unirest("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random");
 
+//   req.query({
+//     "number": "1",
+//     "tags": "lunch"
+//   });
 
-  var req = unirest("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random");
+//   req.headers({
+//     "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+//     "x-rapidapi-key": "7dcc32f944mshf83d252c5a63984p1df45fjsna9113f200bf3"
+//   });
 
-  req.query({
-    "number": "1",
-    "tags": "lunch"
-  });
+//   let recipesModel;
 
-  req.headers({
-    "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-    "x-rapidapi-key": "7dcc32f944mshf83d252c5a63984p1df45fjsna9113f200bf3"
-  });
+//   req.end(function (res) {
+//     if (res.error) throw new Error(res.error);
 
-  let recipesModel;
-
-  req.end(function (res) {
-    if (res.error) throw new Error(res.error);
-
-    console.log(res.body.recipes);
+//     console.log(res.body.recipes);
 
 
-    // the array of recipe objects from the api. we need to 
-    let recipesFromDB = res.body.recipes;
-    recipesModel = recipesFromDB.map((recipe) => {
-      let newObj = {}
-      newObj.title = recipe.title
-      newObj.duration = recipe.readyInMinutes
-      newObj.instructions = recipe.instructions
-      newObj.image = recipe.image
-      return newObj
-    })
-  });
+//     // the array of recipe objects from the api. we need to 
+//     let recipesFromDB = res.body.recipes;
+//     recipesModel = recipesFromDB.map((recipe) => {
+//       let newObj = {}
+//       newObj.title = recipe.title
+//       newObj.duration = recipe.readyInMinutes
+//       newObj.instructions = recipe.instructions
+//       newObj.image = recipe.image
+//       return newObj
+//     })
+//   });
 
-  setTimeout(() => {
-    Recipe.create(recipesModel)
-      .then((randomRecipe) => {
-        console.log('++++++++++++++++ rando recipe  +++++++++++++', randomRecipe)
-        // res.redirect('/recipes/randomRecipe')
-        res.render('recipes/randomRecipe', {recipe: randomRecipe})
-      })
-      .catch((err) => {
-        next(err);
-      })
-  },1000)
+//   setTimeout(() => {
+//     Recipe.create(recipesModel)
+//       .then((randomRecipe) => {
+//         console.log('++++++++++++++++ rando recipe  +++++++++++++', randomRecipe)
+//         // res.redirect('/recipes/randomRecipe')
+//         res.render('recipes/randomRecipe', {recipe: randomRecipe})
+//       })
+//       .catch((err) => {
+//         next(err);
+//       })
+//   },1000)
 
-})
+// })
 
 
 
