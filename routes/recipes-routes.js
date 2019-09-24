@@ -80,7 +80,6 @@ router.get('/', (req, res, next) => {
 
 
 
-
 // GET route to create new comments 
 router.get('/new', (req, res, next) => {
   res.render('recipes/new')
