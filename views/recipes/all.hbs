@@ -4,13 +4,13 @@
     {{#each recipes}}
     <div class='recipe-card'>
         <div class='recipe-text'>
-            <h4>{{this.title}}</h4>
+            <h4> <a href="/recipes/{{this._id}}">{{this.title}}</a></h4>
   
-            <h6>Total Cook Time</h6>
+            {{!-- <h6>Total Cook Time</h6>
             <p>{{this.duration}} minutes</p>
             
             <h6>Instructions</h6>
-            <p> {{this.instructions}} </p>
+            <p> {{this.instructions}} </p> --}}
         </div>
 
         <img src="{{this.image}}" alt="food image">

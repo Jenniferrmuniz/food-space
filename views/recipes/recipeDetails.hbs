@@ -1,7 +1,4 @@
-<h1> Recipe Details</h1>
-
-
-<h2>{{recipe.title}}</h2>
+<h1> {{recipe.title}} Details</h1>
 
 {{#each users}}
 
@@ -11,19 +8,25 @@
 
 {{/each}}
 
+<div class='recipe-card'>
+    <div class='recipe-text'>
+        <h4> {{recipe.title}}</h4>
 
-{{!-- {{recipe.image}} --}}
+        <h6>Total Cook Time</h6>
+        <p>{{recipe.duration}} minutes</p>
 
-<p>{{recipe.instructions}}</p>
+        <h6>Instructions</h6>
+        <p> {{recipe.instructions}} </p>
+    </div>
 
-<p>{{recipe.duration}}</p>
+    <img src="{{recipe.image}}" alt="food image">
+</div>
 
 
-
-{{#each comments}}
+{{!-- {{#each comments}}
 
 {{#if commentChosen}}
 <p>{{this.author}}</p>
 {{/if}}
 
-{{/each}}
+{{/each}} --}}
