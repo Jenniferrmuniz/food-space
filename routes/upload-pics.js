@@ -7,8 +7,8 @@
 // const passport = require('passport');
 
 
-// const multer  = require('multer');
-// const Picture = require('../models/Picture');
+const multer  = require('multer');
+const Picture = require('../models/Picture');
 
 
 
@@ -17,7 +17,7 @@
 
 
 
-// // Route to upload from project base path
+// Route to upload from project base path
 // const upload = multer({ dest: './public/uploads/' });
 
 // router.post('/upload', upload.single('photo'), (req, res) => {
