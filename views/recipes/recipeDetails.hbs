@@ -3,7 +3,14 @@
 
 <h2>{{recipe.name}}</h2>
 
-<p>{{recipe.author}}</p>
+{{#each users}}
+
+{{#if chosen}}
+<p>{{this.username}}</p>
+{{/if}}
+
+{{/each}}
+
 
 {{!-- {{recipe.image}} --}}
 
@@ -13,9 +20,12 @@
 
 <p>{{recipe.comments}}</p>
 
-{{#each recipe.comments}}
+
+
+{{#each comments}}
 
 {{#if commentChosen}}
-
+<p>{{this.author}}</p>
+{{/if}}
 
 {{/each}}
