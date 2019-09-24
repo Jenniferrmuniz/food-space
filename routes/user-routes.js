@@ -127,7 +127,7 @@ router.get('/:id', (req, res, next) => {
 
           // // Check if it is the profile of the user that is logged in
           if(req.user){
-            if (req.user._id === id) {
+            if (req.user._id.equals(id)) {
               req.user.profileOwner = true;
             }
             else {
@@ -137,6 +137,7 @@ router.get('/:id', (req, res, next) => {
 
           // res.send({a:userData, b:allRecipes})
 
+          //console.log(req.user);
 
           res.render('user/profile', {allRecipes: allRecipes, profileInfo: userData});
 
