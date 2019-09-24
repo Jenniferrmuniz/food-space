@@ -5,6 +5,11 @@ const Recipe = require('../models/Recipe');
 const axios = require('axios');
 
 
+
+
+
+
+
 function getRecipesFromAPI() {
   axios.get('https://api.spoonacular.com/recipes/search?query=burger&number=2')
     .then((res) => {
@@ -16,13 +21,13 @@ function getRecipesFromAPI() {
 
 }
 
-
+//Create recipes
 router.get('/randomRecipe', (req, res, next) => {
   axios.get('https://api.spoonacular.com/recipes/search?query=burger&number=2', { headers: { "X-RapidAPI-Key": process.env.API_KEY } })
     .then((res) => {
 
       console.log(res);
-
+      
 
     })
     .catch((err) => {
@@ -35,21 +40,8 @@ router.get('/randomRecipe', (req, res, next) => {
 router.get('/', (req, res, next) => {
 
 
-  //error message to login
-  // if(!req.user){
-  //   req.flash('error', 'Please login to view this page')
-  //   req.flash('/login')
-  // }
-
   Recipe.find()
     .then((recommendedRecipes) => {
-
-      // only lets users delete/edit movies that they created. Admin can do everything
-      // allTheCelebrities.forEach((eachMovie)=>{
-      //   if(eachMovie.creator.equals(req.user._id) || req.user.isAdmin) {
-      //     eachMovie.mine = true;
-      //   }
-      // })
 
       res.render('recipes/recommended', {
         recipes: recommendedRecipes
@@ -59,6 +51,81 @@ router.get('/', (req, res, next) => {
       next(err)
     })
 });
+
+
+
+
+
+
+
+
+
+
+
+
+//Delete recipe
+router.get('/delete/:id', (req, res, next) => {
+  let id = req.params.id;
+
+  Recipe.findByIdAndRemove(id)
+  .then((result) =>{
+    res.redirect('/');
+  })
+  .catch((err) =>{
+    next(err);
+  })
+})
+
+
+
+
+
+//Get update recipe page
+router.get('/update/:id', (req, res, next) =>{
+  let id = req.params.id;
+
+  Recipe.findById(id)
+  .then((res)=>{
+    
+  })
+
+  res.render('recipes/updateRecipe', recipe);
+
+
+})
+
+
+
+
+
+
+
+
+
+
+//Update the recipe
+router.post('/update/:id', (req, res, next) =>{
+  let id = req.params.id;
+
+
+  let updateRecipe = {
+    name: req.body.theName,
+    description: req.body.theDescription,
+    image: req.body.theImage,
+    duration: req.body.theDuration
+  }
+
+
+  Recipe.findByIdAndUpdate(id, updateRecipe)
+  .then((result) => {
+    res.redirect('/recipes/'+id);
+  })
+  .catch((err) =>{
+    next(err);
+  })
+
+})
+
 
 
 
