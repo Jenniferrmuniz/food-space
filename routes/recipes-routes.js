@@ -3,6 +3,7 @@ const router = express.Router();
 
 const User = require('../models/User');
 const Recipe = require('../models/Recipe');
+const Comment = require('../models/Comment');
 const axios = require('axios');
 const unirest = require('unirest');
 
@@ -115,7 +116,7 @@ router.get('/all', (req,res,next)=> {
 router.get('/:id', (req, res, next) => {
   let id = req.params.id;
 
-  
+
   Recipe.findById(id)
     .then((theRecipe) => {
 
