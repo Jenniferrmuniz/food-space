@@ -35,11 +35,16 @@ router.post('/signup', (req, res, next) => {
   let salt = bcrypt.genSaltSync(bcryptSalt);
   let hashPass = bcrypt.hashSync(password, salt);
 
-
-  User.create({
+  let newUser = {
     username: username,
     password: hashPass
-  })
+  }
+
+  if(req.file){
+    newUser.profileImage = req.file.url;
+  }
+
+  User.create(newUser)
     .then((result) => {
 
       res.redirect('/recipes');
