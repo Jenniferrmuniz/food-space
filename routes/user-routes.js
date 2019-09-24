@@ -105,25 +105,41 @@ router.get('/:id', (req, res, next) => {
   User.findById(id)
     .then((userData) => {
 
+      
+
       Recipe.find()
         .then((allRecipes) => {
 
-          // Find recipes that were created by the profile owner
+          // // Find recipes that were created by the profile owner
           allRecipes.forEach((eachRecipe) => {
-            if (eachRecipe.author.equals(id)) {
-              eachRecipe.recipeChosen = true;
+            console.log(eachRecipe);
+
+
+
+            if(eachRecipe.author){
+              if (eachRecipe.author.equals(id)) {
+                eachRecipe.recipeChosen = true;
+              }
             }
+
+
           })
 
-          // Check if it is the profile of the user that is logged in
-          if (theUser._id === id) {
-            theUser.profileOwner = true;
-          }
-          else {
-            theUser.profileOwner = false;
+          // // Check if it is the profile of the user that is logged in
+          if(req.user){
+            if (req.user._id.equals(id)) {
+              req.user.profileOwner = true;
+            }
+            else {
+              req.user.profileOwner = false;
+            }
           }
 
-          res.render('user/profile', { profileInfo: userData, allRecipes: allRecipes });
+          // res.send({a:userData, b:allRecipes})
+
+          //console.log(req.user);
+
+          res.render('user/profile', {allRecipes: allRecipes, profileInfo: userData});
 
         })
         .catch((err) => {

@@ -1,10 +1,10 @@
-const express = require('express');
-const router = express.Router();
-const User = require('../models/User');
-const session = require("express-session");
-const MongoStore = require("connect-mongo")(session);
-const bcrypt = require('bcryptjs');
-const passport = require('passport');
+ const express = require('express');
+ const router = express.Router();
+// const User = require('../models/User');
+// const session = require("express-session");
+// const MongoStore = require("connect-mongo")(session);
+// const bcrypt = require('bcryptjs');
+// const passport = require('passport');
 
 
 const multer  = require('multer');

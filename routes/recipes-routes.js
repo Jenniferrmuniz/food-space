@@ -9,7 +9,6 @@ const unirest = require('unirest');
 
 
 
-
 // router.get('/randomRecipe', (req, res, next) => {
 
 //   var req = unirest("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random");
@@ -49,14 +48,12 @@ const unirest = require('unirest');
 //       .then((randomRecipe) => {
 //         console.log('++++++++++++++++ rando recipe  +++++++++++++', randomRecipe)
 //         // res.redirect('/recipes/randomRecipe')
-//         res.render('recipes/randomRecipe', {
-//           recipe: randomRecipe
-//         })
+//         res.render('recipes/randomRecipe', {recipe: randomRecipe})
 //       })
 //       .catch((err) => {
 //         next(err);
 //       })
-//   }, 1000)
+//   },1000)
 
 // })
 

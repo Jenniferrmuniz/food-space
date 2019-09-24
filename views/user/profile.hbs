@@ -1,7 +1,7 @@
 <h1>Profile</h1>
 
 
-{{!-- <h3> Welcome {{theUser.username}} </h3> --}}
+<h3> Welcome {{theUser.username}} </h3>
 
 
 
@@ -11,7 +11,7 @@
 
 {{else}}
 
-<h3>{{userProfileInfo.username}}'s Profile</h3>
+<h3>{{profileInfo.username}}'s Profile</h3>
 
 {{/if}}
 
@@ -19,16 +19,13 @@
 
 <ul>
     {{#each allRecipes}}
-    {{#if}}
+    {{#if this.recipeChosen}}
     <li>
         <a>{{this.title}}</a>
     </li>
     {{/if}}
     {{/each}}
 </ul>
-
-
-
 
 
 
@@ -46,7 +43,7 @@
 </form>
 
 
-{{/if}}
+{{/if}} 
 
 
 
