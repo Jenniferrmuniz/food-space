@@ -1,12 +1,61 @@
 <h1>Profile</h1>
 
 
-Welcome {{theUser.username}}
+{{!-- <h3> Welcome {{theUser.username}} </h3> --}}
 
+
+
+{{#if theUser.profileOwner}}
+
+<h3>Your Profile</h3>
+
+{{else}}
+
+<h3>{{userProfileInfo.username}}'s Profile</h3>
+
+{{/if}}
+
+
+
+<ul>
+    {{#each allRecipes}}
+    {{#if}}
+    <li>
+        <a>{{this.title}}</a>
+    </li>
+    {{/if}}
+    {{/each}}
+</ul>
+
+
+
+
+
+
+
+
+
+
+
+
+
+{{#if theUser.profileOwner}}
 
 <form action='/profile/edit' method='GET'>
     <button type='submit'>Edit profile</button>
 </form>
+
+
+{{/if}}
+
+
+
+
+
+
+
+
+
 
 
 
@@ -18,3 +67,4 @@ Welcome {{theUser.username}}
 <form action="account/delete-my-account" method="POST">
 <button type='submit'> Delete </button>
 </form> --}}
+

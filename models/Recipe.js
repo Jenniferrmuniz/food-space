@@ -4,10 +4,10 @@ const Schema = mongoose.Schema;
 const recipeSchema = new Schema({
 
   author: {type: Schema.Types.ObjectId, ref: 'User'},
-  name: String,
+  title: String,
   instructions: String,
   image: String, //(image upload from breakout session W5D4)
-  duration: Number, //(total + Prep, this could go in description ? )
+  duration: Number //(total + Prep, this could go in description ? )
   //comments:[{type: Schema.Types.ObjectId, ref: 'User'}]
   // ingredients: [String],
   // instructions: [String], 
@@ -18,3 +18,5 @@ const recipeSchema = new Schema({
 const Recipe = mongoose.model('Recipe', recipeSchema);
 
 module.exports = Recipe;
+
+
