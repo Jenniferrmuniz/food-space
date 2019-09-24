@@ -40,7 +40,7 @@
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdownMenuLink">
           {{#if theUser}}
-          <a class="dropdown-item" href="/user/profile">Profile</a>
+          <a class="dropdown-item" href="/user/{{theUser._id}}"> My Profile </a>
           <a class="dropdown-item" href="/user/logout">Log out ( link not working yet )</a>
           {{else}}
           <a class="dropdown-item" href="/user/signup">Sign up</a>
@@ -48,6 +48,7 @@
           {{/if}}
         </div>
       </li>
+      
     </ul>
   </div>
 </nav>

@@ -123,46 +123,6 @@ app.use((req, res, next) => {
 
 })
 
-//Passport google auth if we want to add later
-
-// passport.use(
-//   new GoogleStrategy({
-//       clientID: process.env.GOOGLE_ID,
-//       clientSecret: process.env.GOOGLE_SECRET,
-//       callbackURL: "/user/auth/google/callback"
-//     },
-//     (accessToken, refreshToken, profile, done) => {
-//       // to see the structure of the data in received response:
-//       console.log("Google account details:", profile);
-
-//       User.findOne({
-//           googleID: profile.id
-//         })
-//         .then(user => {
-//           if (user) {
-//             done(null, user);
-//             return;
-//           }
-
-//           if (profile.photos) {
-//             theImage = profile.photos[0].value;
-//           }
-
-//           User.create({
-//               googleID: profile.id,
-//               isAdmin: false,
-//               image: theImage,
-//               profile: profile._json.username
-//             })
-//             .then(newUser => {
-//               done(null, newUser);
-//             })
-//             .catch(err => done(err)); // closes User.create()
-//         })
-//         .catch(err => done(err)); // closes User.findOne()
-//     }
-//   )
-// );
 
 
 

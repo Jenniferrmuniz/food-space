@@ -1,0 +1,29 @@
+<h1> Recipe Details</h1>
+
+
+<h2>{{recipe.title}}</h2>
+
+{{#each users}}
+
+{{#if chosen}}
+<p>{{this.username}}</p>
+{{/if}}
+
+{{/each}}
+
+
+{{!-- {{recipe.image}} --}}
+
+<p>{{recipe.instructions}}</p>
+
+<p>{{recipe.duration}}</p>
+
+
+
+{{#each comments}}
+
+{{#if commentChosen}}
+<p>{{this.author}}</p>
+{{/if}}
+
+{{/each}}

@@ -1,84 +1,72 @@
 const express = require('express');
 const router = express.Router();
 
-const User = require('../models/User')
+const User = require('../models/User');
+const Recipe = require('../models/Recipe');
+const Comment = require('../models/Comment');
 
 const bcrypt = require("bcryptjs");
 const bcryptSalt = 10;
 const passport = require('passport');
 
 
+
+
+
+
+
+
+
+
+
+// GET: signup page
 router.get('/signup', (req, res, next) => {
-
   res.render('user/signup');
-
 })
 
+
+
+
+// POST: create user with info from sign up page
 router.post('/signup', (req, res, next) => {
-
-  // let admin = false;
-
-  // if (req.user) {
-  //   // check if logged in  
-  //   if (req.user.isAdmin) {
-  //     //check if logged in user in an admin if so give them true value to is admin
-  //     admin = req.body.role ? req.body.role : false;
-  //   }
-  // }
-
 
   let username = req.body.theUsername;
   let password = req.body.thePassword;
-
   let salt = bcrypt.genSaltSync(bcryptSalt);
   let hashPass = bcrypt.hashSync(password, salt);
 
-  // check for if no password entered...
-  
-  // if (username === "" || password === "") {
-  //   res.render("user/signup", {
-  //     errorMessage: "Indicate a username and a password to sign up"
-  //   });
-  //   return;
-  // }
 
   User.create({
-      username: username,
-      password: hashPass,
-      //isAdmin: admin
-    })
+    username: username,
+    password: hashPass
+  })
     .then((result) => {
 
       res.redirect('/recipes');
 
-      // if no user then do the auto login when signing up
-      // if (!req.user) {
-      //   req.login(result, function (err, user) {
-      //     if (!err) {
-      //       res.redirect('/recommended');
-      //     } else {
-      //       next(err);
-      //     }
-      //   })
-      // } 
-      // else {
-      //   res.redirect('/admin/active-users') //when admin creates a user go to all users page
-      // }
     })
     .catch((err) => {
       next(err);
     })
 })
 
-//route to login page
+
+
+
+
+
+
+
+
+
+// GET: login page
 router.get('/login', (req, res, next) => {
-
   res.render('user/login')
-
 })
 
 
-//route for actually login in. if successful, takes you to celebrity page, if not back to login in again.
+
+// POST: use info from login page to login
 router.post("/login", passport.authenticate("local", {
   successRedirect: "/recipes",
   failureRedirect: "/user/login",
@@ -87,49 +75,76 @@ router.post("/login", passport.authenticate("local", {
 }));
 
 
-router.get("/logout", (req, res, next) => {
 
+
+
+
+
+
+// GET: logout button
+router.get("/logout", (req, res, next) => {
   req.logout(); //passport specific logout. without passport we use req.session.destroy()
   res.redirect("/user/login");
-
 });
 
 
 
 
-//creates route to profile or myaccount page so user can delete their account if they want. gives some control to user
-// router.get('/profile', (req, res, next) => {
-//   res.render('user/profile');
-// })
 
-//submits post for user to delete account from DB
-// router.post('/account/delete-my-account', (req, res, next) => {
-//   User.findByIdAndRemove(req.user._id)
-//     .then(() => {
-//       res.redirect('/')
-//     })
-//     .catch((err) => {
-//       next(err);
-//     })
-// })
 
-// router.get(
-//   "/auth/google",
-//   passport.authenticate("google", {
-//     scope: [
-//       "https://www.googleapis.com/auth/userinfo.profile",
-//       "https://www.googleapis.com/auth/userinfo.email"
-//     ]
-//   })
-// );
 
-// router.get(
-//   "/auth/google/callback",
-//   passport.authenticate("google", {
-//     successRedirect: "/celebrity",
-//     failureRedirect: "/user/login" // here you would redirect to the login page using traditional login approach
-//   })
-// );
+
+
+
+
+// GET: profile page
+router.get('/:id', (req, res, next) => {
+
+  let id = req.params.id;
+
+  User.findById(id)
+    .then((userData) => {
+
+      Recipe.find()
+        .then((allRecipes) => {
+
+          // Find recipes that were created by the profile owner
+          allRecipes.forEach((eachRecipe) => {
+            if (eachRecipe.author.equals(id)) {
+              eachRecipe.recipeChosen = true;
+            }
+          })
+
+          // Check if it is the profile of the user that is logged in
+          if (theUser._id === id) {
+            theUser.profileOwner = true;
+          }
+          else {
+            theUser.profileOwner = false;
+          }
+
+          res.render('user/profile', { profileInfo: userData, allRecipes: allRecipes });
+
+        })
+        .catch((err) => {
+          next(err);
+        })
+
+    })
+
+})
+
+
+
+
+
+
+
+
+
+
+
+
 
 
 module.exports = router;

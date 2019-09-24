@@ -6,17 +6,7 @@ const userSchema = new Schema({
   username: String,
   password: String,
   email: String,
-  image: String,
-  // myRecipes: [{
-  //   type: Schema.Type.ObjectId,
-  //   ref: "Recipe"
-  // }],
-  // favorites: [{
-  //   type: Schema.Type.ObjectId,
-  //   ref: "Favorites"
-  // }],
-  // isAdmin: Boolean, wishlist
-  // googleID: String, wishlist
+  image: String
 })
 
 const User = mongoose.model('User', userSchema);
