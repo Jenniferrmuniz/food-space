@@ -3,18 +3,9 @@
 <div class='wrapper'>
     {{#each recipes}}
     <div class='recipe-card'>
-        <div class='recipe-text'>
-            <h4> <a href="/recipes/details/{{this._id}}">{{this.title}}</a></h4>
-  
-            {{!-- <h6>Total Cook Time</h6>
-            <p>{{this.duration}} minutes</p>
-            
-            <h6>Instructions</h6>
-            <p> {{this.instructions}} </p> --}}
-        </div>
+        <h4> <a href="/recipes/details/{{this._id}}">{{this.title}}</a></h4>
 
         <img src="{{this.image}}" alt="food image">
-
     </div>
     {{/each}}
 </div>

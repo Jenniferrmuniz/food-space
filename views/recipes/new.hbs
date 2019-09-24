@@ -1,0 +1,29 @@
+<div class='add-new'>
+    <h2> Add a new recipe </h2>
+
+    <form action="/recipes/new" method="POST">
+
+        <div>
+            <p>Title</p>
+            <input type="text" name='theTitle'>
+
+            <p>Duration</p>
+            <input type="text" name='theDuration'>
+
+            <p>Instructions</p>
+            <input type="text" name='theInstructions'>
+        </div>
+
+
+        {{!-- file upload for images needs to be added below --}}
+        <div>
+            <p>Image:</p>
+            <input type="text" name='theImage'>
+        </div>
+
+        <div>
+            <button type="submit">SAVE</button>
+        </div>
+
+    </form>
+</div>

@@ -80,6 +80,39 @@ router.get('/', (req, res, next) => {
 
 
 
+
+// GET route to create new comments 
+router.get('/new', (req, res, next) => {
+  res.render('recipes/new')
+})
+
+
+router.post('/new', (req, res, next) => {
+
+  let title = req.body.theTitle;
+  let duration = req.body.theDuration;
+  let instructions = req.body.theInstructions;
+  let image = req.body.theImage;
+
+  Recipe.create({
+          title: title,
+          duration: duration,
+          instructions: instructions,
+          image: image
+      })
+      .then((result) => {
+          res.redirect('/recipes/all')
+      })
+      .catch((err) => {
+          next(err);
+      })
+})
+
+
+
+
+
+
 router.get('/all', (req,res,next)=> {
   
   // login check for all recipes
@@ -107,6 +140,8 @@ router.get('/all', (req,res,next)=> {
       next(err)
     })
 })
+
+
 
 
 
