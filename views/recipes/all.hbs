@@ -1,0 +1,20 @@
+<h2> List of All Recipes</h2>
+
+<div class='wrapper'>
+    {{#each recipes}}
+    <div class='recipe-card'>
+        <div class='recipe-text'>
+            <h4>{{this.title}}</h4>
+  
+            <h6>Total Cook Time</h6>
+            <p>{{this.duration}} minutes</p>
+            
+            <h6>Instructions</h6>
+            <p> {{this.instructions}} </p>
+        </div>
+
+        <img src="{{this.image}}" alt="food image">
+
+    </div>
+    {{/each}}
+</div>

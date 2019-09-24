@@ -1,23 +1,23 @@
-// const express = require('express');
-// const router = express.Router();
-// const User = require('../models/User');
-// const session = require("express-session");
-// const MongoStore = require("connect-mongo")(session);
-// const bcrypt = require('bcryptjs');
-// const passport = require('passport');
+const express = require('express');
+const router = express.Router();
+const User = require('../models/User');
+const session = require("express-session");
+const MongoStore = require("connect-mongo")(session);
+const bcrypt = require('bcryptjs');
+const passport = require('passport');
 
 
-// const multer  = require('multer');
-// const Picture = require('../models/Picture');
-
-
-
+const multer  = require('multer');
+const Picture = require('../models/Picture');
 
 
 
 
 
-// // Route to upload from project base path
+
+
+
+// Route to upload from project base path
 // const upload = multer({ dest: './public/uploads/' });
 
 // router.post('/upload', upload.single('photo'), (req, res) => {
@@ -53,4 +53,4 @@
 
 
 
-// module.exports = router;
+module.exports = router;

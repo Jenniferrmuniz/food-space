@@ -10,58 +10,55 @@ const unirest = require('unirest');
 
 
 
-router.get('/randomRecipe', (req, res, next) => {
+// router.get('/randomRecipe', (req, res, next) => {
+
+//   var req = unirest("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random");
+
+//   req.query({
+//     "number": "1",
+//     "tags": "lunch"
+//   });
+
+//   req.headers({
+//     "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+//     "x-rapidapi-key": "7dcc32f944mshf83d252c5a63984p1df45fjsna9113f200bf3"
+//   });
+
+//   let recipesModel;
+
+//   req.end(function (res) {
+//     if (res.error) throw new Error(res.error);
+
+//     console.log(res.body.recipes);
 
 
-  var req = unirest("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random");
+//     // the array of recipe objects from the api. we need to 
+//     let recipesFromDB = res.body.recipes;
+//     recipesModel = recipesFromDB.map((recipe) => {
+//       let newObj = {}
+//       newObj.title = recipe.title
+//       newObj.duration = recipe.readyInMinutes
+//       newObj.instructions = recipe.instructions
+//       newObj.image = recipe.image
+//       return newObj
+//     })
+//   });
 
-  req.query({
-    "number": "1",
-    "tags": "lunch"
-  });
+//   setTimeout(() => {
+//     Recipe.create(recipesModel)
+//       .then((randomRecipe) => {
+//         console.log('++++++++++++++++ rando recipe  +++++++++++++', randomRecipe)
+//         // res.redirect('/recipes/randomRecipe')
+//         res.render('recipes/randomRecipe', {
+//           recipe: randomRecipe
+//         })
+//       })
+//       .catch((err) => {
+//         next(err);
+//       })
+//   }, 1000)
 
-  req.headers({
-    "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-    "x-rapidapi-key": "7dcc32f944mshf83d252c5a63984p1df45fjsna9113f200bf3"
-  });
-
-  let recipesModel;
-
-  req.end(function (res) {
-    if (res.error) throw new Error(res.error);
-
-    console.log(res.body.recipes);
-
-
-    // the array of recipe objects from the api. we need to 
-    let recipesFromDB = res.body.recipes;
-    recipesModel = recipesFromDB.map((recipe) => {
-      let newObj = {}
-      newObj.title = recipe.title
-      newObj.duration = recipe.readyInMinutes
-      newObj.instructions = recipe.instructions
-      newObj.image = recipe.image
-      return newObj
-    })
-  });
-
-  setTimeout(() => {
-    Recipe.create(recipesModel)
-      .then((randomRecipe) => {
-        console.log('++++++++++++++++ rando recipe  +++++++++++++', randomRecipe)
-        // res.redirect('/recipes/randomRecipe')
-        res.render('recipes/randomRecipe', {recipe: randomRecipe})
-      })
-      .catch((err) => {
-        next(err);
-      })
-  },1000)
-
-})
-
-
-
-
+// })
 
 
 
@@ -85,14 +82,33 @@ router.get('/', (req, res, next) => {
 
 
 
+router.get('/all', (req,res,next)=> {
+  
+  // login check for all recipes
 
+  // if(!req.user){
+  //   req.flash('error', 'Please login to view this page')
+  //   req.flash('/login')
+  // }
 
+  Recipe.find()
+    .then((allTheRecipes) => {
 
+      // only lets users delete/edit movies that they created. Admin can do everything
+      // allTheCelebrities.forEach((eachMovie)=>{
+      //   if(eachMovie.creator.equals(req.user._id) || req.user.isAdmin) {
+      //     eachMovie.mine = true;
+      //   }
+      // })
 
-
-
-
-
+      res.render('recipes/all', {
+        recipes: allTheRecipes
+      })
+    })
+    .catch((err) => {
+      next(err)
+    })
+})
 
 
 
@@ -113,45 +129,43 @@ router.get('/:id', (req, res, next) => {
 
               // Find all of the comments associated with this recipe
               allComments.forEach((eachComment) => {
-                  if (eachComment.recipe.equals(theRecipe._id)) {
-                    eachComment.chosen = true;
+                if (eachComment.recipe.equals(theRecipe._id)) {
+                  eachComment.chosen = true;
+                }
+
+                allUsers.forEach((eachUser) => {
+
+                  // Find the user that authored the recipe
+                  if (eachUser._id.equals(theRecipe.author)) {
+                    eachUser.chosen = true;
                   }
 
-                  allUsers.forEach((eachUser) => {
-
-                    // Find the user that authored the recipe
-                    if (eachUser._id.equals(theRecipe.author)) {
-                      eachUser.chosen = true;
-                    }
-
-                    // Find the users that authored the comments
-                    if(eachUser._id.equals(eachComment.author)){
-                      eachUser.commentChosen = true;
-                    }
-                  })
+                  // Find the users that authored the comments
+                  if (eachUser._id.equals(eachComment.author)) {
+                    eachUser.commentChosen = true;
+                  }
+                })
               })
 
-              res.render('recipes/recipeDetails', {recipe: theRecipe, users: allUsers, comments: allComments});
+              res.render('recipes/recipeDetails', {
+                recipe: theRecipe,
+                users: allUsers,
+                comments: allComments
+              });
 
             })
-            .catch((err)=>{
+            .catch((err) => {
               next(err);
             })
         })
-        .catch((err) =>{
+        .catch((err) => {
           next(err);
         })
     })
-    .catch((err)=>{
+    .catch((err) => {
       next(err);
     })
 })
-
-
-
-
-
-
 
 
 
@@ -177,20 +191,16 @@ router.get('/delete/:id', (req, res, next) => {
 
 
 
-
-
-
-
 // GET: update recipe page
 router.get('/update/:id', (req, res, next) => {
   let id = req.params.id;
 
   Recipe.findById(id)
     .then((theRecipe) => {
-      
+
       User.find()
         .then((allUsers) => {
-          
+
           // Find the author of the recipe
           allUsers.forEach((eachUser) => {
             if (eachUser._id.equals(theRecipe.author)) {
@@ -198,7 +208,10 @@ router.get('/update/:id', (req, res, next) => {
             }
           })
 
-          res.render('recipes/updateRecipe', { recipe: theRecipe, users: allUsers });
+          res.render('recipes/updateRecipe', {
+            recipe: theRecipe,
+            users: allUsers
+          });
         })
         .catch((err) => {
           next(err);
