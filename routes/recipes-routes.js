@@ -92,8 +92,7 @@ router.get('/:id', (req, res, next) => {
 
               // Find all of the comments associated with this recipe
               allComments.forEach((eachComment) => {
-                for (let i = 0; i < theRecipe.comments.length; i++) {
-                  if (eachComment._id.equals(theRecipe.comments[i])) {
+                  if (eachComment.recipe.equals(theRecipe._id)) {
                     eachComment.chosen = true;
                   }
 
@@ -109,7 +108,6 @@ router.get('/:id', (req, res, next) => {
                       eachUser.commentChosen = true;
                     }
                   })
-                }
               })
 
               res.render('recipes/recipeDetails', {recipe: theRecipe, users: allUsers, comments: allComments});

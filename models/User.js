@@ -6,7 +6,7 @@ const userSchema = new Schema({
   username: String,
   password: String,
   email: String,
-  image: String,
+  image: String
   // myRecipes: [{
   //   type: Schema.Type.ObjectId,
   //   ref: "Recipe"
