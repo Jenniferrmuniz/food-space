@@ -1,43 +1,16 @@
 const express = require('express');
 const router = express.Router();
 
+const User = require('../models/User');
 const Recipe = require('../models/Recipe');
+const Comment = require('../models/Comment');
+
 const axios = require('axios');
 
 
 
 
 
-
-
-
-
-
-
-// function getRecipesFromAPI() {
-//   axios.get('https://api.spoonacular.com/recipes/search?query=burger&number=2')
-//     .then((res) => {
-
-//       console.log(res);
-
-
-//     })
-
-// }
-
-// //Create recipes
-// router.get('/randomRecipe', (req, res, next) => {
-//   axios.get('https://api.spoonacular.com/recipes/search?query=burger&number=2', { headers: { "X-RapidAPI-Key": process.env.API_KEY } })
-//     .then((res) => {
-
-//       console.log(res);
-
-
-//     })
-//     .catch((err) => {
-//       next(err);
-//     })
-// })
 
 
 /* GET home page */
@@ -77,7 +50,7 @@ router.get('/', (req, res, next) => {
 
 
 
-// GET recipe details page
+// GET: recipe details page
 router.get('/:id', (req, res, next) => {
   let id = req.params.id;
 
@@ -137,7 +110,7 @@ router.get('/:id', (req, res, next) => {
 
 
 
-//Delete recipe
+// GET: recipe to be deleted and remove it from the DB
 router.get('/delete/:id', (req, res, next) => {
   let id = req.params.id;
 
@@ -160,19 +133,23 @@ router.get('/delete/:id', (req, res, next) => {
 
 
 
-//Get update recipe page
+// GET: update recipe page
 router.get('/update/:id', (req, res, next) => {
   let id = req.params.id;
 
   Recipe.findById(id)
     .then((theRecipe) => {
+      
       User.find()
         .then((allUsers) => {
+          
+          // Find the author of the recipe
           allUsers.forEach((eachUser) => {
             if (eachUser._id.equals(theRecipe.author)) {
               eachUser.chosen = true;
             }
           })
+
           res.render('recipes/updateRecipe', { recipe: theRecipe, users: allUsers });
         })
         .catch((err) => {
@@ -187,10 +164,11 @@ router.get('/update/:id', (req, res, next) => {
 
 
 
-//Update the recipe
+
+
+// POST: update the recipe using the info from update page
 router.post('/update/:id', (req, res, next) => {
   let id = req.params.id;
-
 
   let updateRecipe = {
     name: req.body.theName,
@@ -198,7 +176,6 @@ router.post('/update/:id', (req, res, next) => {
     image: req.body.theImage,
     duration: req.body.theDuration
   }
-
 
   Recipe.findByIdAndUpdate(id, updateRecipe)
     .then((result) => {
@@ -209,8 +186,6 @@ router.post('/update/:id', (req, res, next) => {
     })
 
 })
-
-
 
 
 

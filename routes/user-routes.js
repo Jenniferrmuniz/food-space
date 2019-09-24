@@ -1,34 +1,44 @@
 const express = require('express');
 const router = express.Router();
 
-const User = require('../models/User')
+const User = require('../models/User');
+const Recipe = require('../models/Recipe');
+const Comment = require('../models/Comment');
 
 const bcrypt = require("bcryptjs");
 const bcryptSalt = 10;
 const passport = require('passport');
 
 
+
+
+
+
+
+
+
+
+
+// GET: signup page
 router.get('/signup', (req, res, next) => {
-
   res.render('user/signup');
-
 })
 
-router.post('/signup', (req, res, next) => {
 
+
+
+// POST: create user with info from sign up page
+router.post('/signup', (req, res, next) => {
 
   let username = req.body.theUsername;
   let password = req.body.thePassword;
-
   let salt = bcrypt.genSaltSync(bcryptSalt);
   let hashPass = bcrypt.hashSync(password, salt);
 
 
-
   User.create({
     username: username,
-    password: hashPass,
-    //isAdmin: admin
+    password: hashPass
   })
     .then((result) => {
 
@@ -40,15 +50,23 @@ router.post('/signup', (req, res, next) => {
     })
 })
 
-//route to login page
+
+
+
+
+
+
+
+
+
+// GET: login page
 router.get('/login', (req, res, next) => {
-
   res.render('user/login')
-
 })
 
 
-//route for actually login in. if successful, takes you to celebrity page, if not back to login in again.
+
+// POST: use info from login page to login
 router.post("/login", passport.authenticate("local", {
   successRedirect: "/recipes",
   failureRedirect: "/user/login",
@@ -57,11 +75,16 @@ router.post("/login", passport.authenticate("local", {
 }));
 
 
-router.get("/logout", (req, res, next) => {
 
+
+
+
+
+
+// GET: logout button
+router.get("/logout", (req, res, next) => {
   req.logout(); //passport specific logout. without passport we use req.session.destroy()
   res.redirect("/user/login");
-
 });
 
 
@@ -74,6 +97,7 @@ router.get("/logout", (req, res, next) => {
 
 
 
+// GET: profile page
 router.get('/:id', (req, res, next) => {
 
   let id = req.params.id;
@@ -83,12 +107,15 @@ router.get('/:id', (req, res, next) => {
 
       Recipe.find()
         .then((allRecipes) => {
+
+          // Find recipes that were created by the profile owner
           allRecipes.forEach((eachRecipe) => {
             if (eachRecipe.author.equals(id)) {
               eachRecipe.recipeChosen = true;
             }
           })
 
+          // Check if it is the profile of the user that is logged in
           if (theUser._id === id) {
             theUser.profileOwner = true;
           }
@@ -96,7 +123,7 @@ router.get('/:id', (req, res, next) => {
             theUser.profileOwner = false;
           }
 
-          res.render('user/profile', {profileInfo: userData, allRecipes: allRecipes});
+          res.render('user/profile', { profileInfo: userData, allRecipes: allRecipes });
 
         })
         .catch((err) => {
