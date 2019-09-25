@@ -114,22 +114,10 @@ router.post('/new', (req, res, next) => {
 
 router.get('/all', (req,res,next)=> {
   
-  // login check for all recipes
-
-  // if(!req.user){
-  //   req.flash('error', 'Please login to view this page')
-  //   req.flash('/login')
-  // }
 
   Recipe.find()
     .then((allTheRecipes) => {
 
-      // only lets users delete/edit movies that they created. Admin can do everything
-      // allTheCelebrities.forEach((eachMovie)=>{
-      //   if(eachMovie.creator.equals(req.user._id) || req.user.isAdmin) {
-      //     eachMovie.mine = true;
-      //   }
-      // })
 
       res.render('recipes/all', {
         recipes: allTheRecipes

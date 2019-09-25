@@ -3,7 +3,7 @@
   <p>Huurry up and enter a username. We're hungry, too!</p>
 </div>
 
-<form action="/user/signup" method="POST" id="signup-form">
+<form action="/user/signup" method="POST" id="signup-form" enctype='multipart/form-data'>
   <h2>Sign Up</h2>
 
   <label for="username">Username</label>
@@ -11,6 +11,11 @@
 
   <label for="password">Password</label>
   <input type="password" name="thePassword">
+
+
+
+  <p>Profile Picture</p>
+  <input type="file" name="the-image-input-name">
 
   {{!-- {{#if errorMessage }}
     <div class="error-message">{{ errorMessage }}</div>
