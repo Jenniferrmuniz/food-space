@@ -39,7 +39,7 @@ router.post('/signup', magicUploadTool.single('the-image-input-name'), (req, res
     password: hashPass
   }
 
-  console.log(req.file);
+
 
   // if(req.body['the-image-input-name']){
   //   newUser.profileImage = req.body['the-image-input-name'];
