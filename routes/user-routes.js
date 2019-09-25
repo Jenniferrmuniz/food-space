@@ -25,10 +25,9 @@ router.get('/signup', (req, res, next) => {
 })
 
 
-router.post('/signup', magicUploadTool.single('the-image-input-name'), (req, res, next) => {
 
 // POST: create user with info from sign up page
-//router.post('/signup', (req, res, next) => {
+router.post('/signup', magicUploadTool.single('the-image-input-name'), (req, res, next) => {
 
   let username = req.body.theUsername;
   let password = req.body.thePassword;
@@ -145,9 +144,6 @@ router.get('/:id', (req, res, next) => {
             }
           }
 
-          // res.send({a:userData, b:allRecipes})
-
-          //console.log(req.user);
 
           res.render('user/profile', {allRecipes: allRecipes, profileInfo: userData});
 

@@ -4,10 +4,6 @@ const Comment = require('../models/Comment');
 
 
 
-// router.get('/recipeDetails', (req, res, next)=>{
-    
-// })
-
 
 
 router.post('/recipe/:id', (req, res, next) => {
