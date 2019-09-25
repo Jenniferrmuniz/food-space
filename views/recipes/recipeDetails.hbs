@@ -1,6 +1,6 @@
 
 {{#if recipe.author}}
-<h6> Recipe created by: {{recipe.author.username}} </h6>
+<h6> Recipe created by: <a href='/user/{{recipe.author._id}}'>{{recipe.author.username}} </a></h6>
 {{else}}
 <h6> Recipe creator unknown </h6>
 {{/if}}
@@ -33,7 +33,7 @@
 {{#each comments}}
 
 <p>{{this.comment}}</p>
-<p>{{this.author.username}}</p>
+<p> <a href='/user/{{this.author._id}}'>{{this.author.username}} </a> </p>
 
 {{/each}}
 
