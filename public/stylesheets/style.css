@@ -22,7 +22,7 @@ a {
   left: 0;
   z-index: -5; }
 
-.wrapper {
+.all-recipes {
   border: 1px solid red;
   display: flex;
   justify-content: space-around;
