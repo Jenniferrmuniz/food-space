@@ -1,54 +1,72 @@
 <div class='details-wrapper'>
-    {{#if recipe.author}}
-    <h6> Recipe created by: <a href='/user/{{recipe.author._id}}'>{{recipe.author.username}} </a></h6>
-    {{else}}
-    <h6> Recipe creator unknown </h6>
-    {{/if}}
 
-    <div class='details-card'>
-        <div class='details-text'>
-            <h3> {{recipe.title}}</h3>
+    <img class='background'
+        {{!-- src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1568&q=80" --}}
+        src='https://images.unsplash.com/photo-1490818387583-1baba5e638af?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1531&q=80'
+        alt="avocado image">
 
-            <h6>Total Cook Time</h6>
-            <p>{{recipe.duration}} minutes</p>
 
-            <h6>Difficulty</h6>
-            <p>{{recipe.difficulty}}</p>
+    <div class='details-text'>
+        {{#if recipe.author}}
+        <h6> Recipe created by: <a href='/user/{{recipe.author._id}}'>{{recipe.author.username}} </a></h6>
+        {{else}}
+        <h6> Recipe creator unknown </h6>
+        {{/if}}
+        <div class='details-card'>
+            <div>
+                <h3> {{recipe.title}}</h3>
 
-            <h6>Instructions</h6>
-            <ol>
-            {{#each recipe.instructions}}
-            {{#if this.step}}
-            <li>{{this.step}}</li>
-            {{else}}
-            <li>{{this}}</li>
-            {{/if}}
-            {{/each}}
-            </ol>
 
+                <h6>Total Cook Time</h6>
+                <p>{{recipe.duration}} minutes</p>
+
+                <h6>Difficulty</h6>
+                <p>{{recipe.difficulty}}</p>
+
+
+                <h6>Instructions</h6>
+                <ol>
+                    {{#each recipe.instructions}}
+                    {{#if this.step}}
+                    <li>{{this.step}}</li>
+                    {{else}}
+                    <li>{{this}}</li>
+                    {{/if}}
+                    {{/each}}
+                </ol>
+
+            </div>
         </div>
+    </div>
 
+    <div class='details-image'>
         <img src="{{recipe.image}}" alt="food image">
     </div>
 
+</div>
 
 
-    {{#if theUser}}
+{{!-- <div class="form-group">
+  <label for="comment">Comment:</label>
+  <textarea class="form-control" rows="5" id="comment"></textarea>
+</div> --}}
+{{#if theUser}}
+
+<div class='comment-box'>
     <form action='/comments/recipe/{{recipe._id}}' method='POST'>
-        <input type='text' name='theComment'>
+        <textarea class="form-control" rows="5" id="comment" name='theComment'></textarea>
+        {{!-- <input type='text' name='theComment'> --}}
         <input type='hidden' name='theAuthor' value='{{theUser._id}}'>
         <input type='hidden' name='theRecipe' value='{{recipe._id}}'>
         <button type='submit'>Submit comment</button>
     </form>
-    {{/if}}
 
-    {{#each comments}}
-
-    <p>{{this.comment}}</p>
-    <p> <a href='/user/{{this.author._id}}'>{{this.author.username}} </a> </p>
-
-    {{/each}}
-
-
+    <div class='comments'>
+        {{#each comments}}
+        {{!-- <p>{{this.comment}}</p> --}}
+        <p> <a class='comment-user' href='/user/{{this.author._id}}'>{{this.author.username}} </a> {{this.comment}} </p>
+        {{/each}}
+    </div>
 
 </div>
+{{/if}}

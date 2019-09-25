@@ -76,18 +76,20 @@ a {
   height: 350px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
-  background-color: rgba($color: #FFFF00, $alpha: .6);
-  margin: 10px;
-  border-radius: 12px;
+  background-color: rgba($color: #6b4fa0, $alpha: .85);
+  margin: 8px;
+  border-radius: 16px;
   text-align: center;
+  color: white;
   // background-color: 
 }
 
 .recipe-card img {
   width: 80%;
-  border-radius: 6px;
+  border-radius: 8px;
+  border: 1px solid white;
 }
 
 .all-recipes a {
@@ -100,17 +102,42 @@ a {
   color: black;
 }
 
+
 .details-wrapper {
-  margin: 20px;
+  margin: 16px;
   display: flex;
+  // flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
-  flex-direction: column;
-  padding: 20px;
-  border-radius: 12px;
-  background-color: rgba($color: #FF0080, $alpha: .4);
+  padding: 24px;
+  border-radius: 8px;
+  // background-color: rgba($color: #FF0080, $alpha: 1);
+  // background-color: rgba($color: rgb(255, 98, 169), $alpha: .8);
+  background-color: rgba($color: rgb(99, 195, 219), $alpha: .9);
+  color: white;
 }
 
-.details-card img {
-  border-radius: 6px;
+.details-wrapper img {
+  border-radius: 8px;
+}
+
+.details-wrapper div {
+  margin: 8px;
+}
+
+.comment-box {
+  margin: auto 350px;
+}
+
+.comments {
+  text-align: left;
+  border-radius: 8px;
+  // border: 1px solid red;
+  background-color: rgba($color: rgb(72, 74, 75), $alpha: .6);
+  color: white;
+  padding: 5px;
+}
+
+.comment-user {
+  color: rgb(0, 247, 255);
 }

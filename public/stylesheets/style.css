@@ -48,16 +48,18 @@ a {
   height: 350px;
   display: flex;
   flex-direction: column;
-  justify-content: space-around;
+  justify-content: space-evenly;
   align-items: center;
-  background-color: rgba(255, 255, 0, 0.6);
-  margin: 10px;
-  border-radius: 12px;
-  text-align: center; }
+  background-color: rgba(107, 79, 160, 0.85);
+  margin: 8px;
+  border-radius: 16px;
+  text-align: center;
+  color: white; }
 
 .recipe-card img {
   width: 80%;
-  border-radius: 6px; }
+  border-radius: 8px;
+  border: 1px solid white; }
 
 .all-recipes a {
   color: black; }
@@ -68,16 +70,32 @@ a {
   color: black; }
 
 .details-wrapper {
-  margin: 20px;
+  margin: 16px;
   display: flex;
   justify-content: space-around;
   align-items: center;
-  flex-direction: column;
-  padding: 20px;
-  border-radius: 12px;
-  background-color: rgba(255, 0, 128, 0.4); }
+  padding: 24px;
+  border-radius: 8px;
+  background-color: rgba(99, 195, 219, 0.9);
+  color: white; }
 
-.details-card img {
-  border-radius: 6px; }
+.details-wrapper img {
+  border-radius: 8px; }
+
+.details-wrapper div {
+  margin: 8px; }
+
+.comment-box {
+  margin: auto 350px; }
+
+.comments {
+  text-align: left;
+  border-radius: 8px;
+  background-color: rgba(72, 74, 75, 0.6);
+  color: white;
+  padding: 5px; }
+
+.comment-user {
+  color: #00f7ff; }
 
 /*# sourceMappingURL=style.css.map */

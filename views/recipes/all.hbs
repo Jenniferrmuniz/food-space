@@ -2,6 +2,11 @@
 
     <h2> List of All Recipes</h2>
 
+  <img class='background'
+    {{!-- src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1568&q=80" --}}
+    src="https://images.unsplash.com/photo-1463740839922-2d3b7e426a56?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=2019&q=80"
+    alt="berries image">
+
     <div class='all-recipes'>
         {{#each recipes}}
         <a href="/recipes/details/{{this._id}}">
@@ -14,3 +19,4 @@
         {{/each}}
     </div>
 </div>
+
