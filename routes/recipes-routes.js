@@ -38,7 +38,7 @@ router.get('/randomRecipe', (req, res, next) => {
       let newObj = {}
       newObj.title = recipe.title
       newObj.duration = recipe.readyInMinutes
-      newObj.instructions = recipe.analyzedInstructions //analyzed instructions?
+      newObj.instructions = recipe.analyzedInstructions[0] //analyzed instructions?
       newObj.image = recipe.image
       
       return newObj
