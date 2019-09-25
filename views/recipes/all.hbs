@@ -1,25 +1,16 @@
+<div class='all-recipes-page'>
 
-<div id='all-recipes-page'>
+    <h2> List of All Recipes</h2>
 
-<h2> List of All Recipes</h2>
+    <div class='all-recipes'>
+        {{#each recipes}}
+        <a href="/recipes/details/{{this._id}}">
+            <div class='recipe-card'>
+                <h4> {{this.title}} </h4>
 
-<div id='all-recipes-list'>
-
-    {{#each recipes}}
-    <a href="/recipes/details/{{this._id}}">
-    <div class='recipe-card'>
-        <h4> {{this.title}} </h4>
-
-        <img src="{{this.image}}" alt="food image">
+                <img src="{{this.image}}" alt="food image">
+            </div>
+        </a>
+        {{/each}}
     </div>
-    </a>
-
-    {{/each}}
-
-
 </div>
-
-
-
-</div>
-

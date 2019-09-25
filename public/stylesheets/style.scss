@@ -2,9 +2,13 @@
 // green #00FF80   0, 255, 128
 // blue #0000FF   0, 0, 255
 // pink #FF0080    255, 0, 128
+// purple #864BFF
+// watermelon pink #FF0D7B
+
+@import url('https://fonts.googleapis.com/css?family=Lato:300,400&display=swap');
 
 body {
-  // padding: 0px;
+  padding-top: 70px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 
 }
@@ -13,10 +17,24 @@ a {
   color: #00B7FF;
 }
 
+.navbar {
+  background-color: rgba($color: #000000, $alpha: .7)
+}
+
+.spoon {
+  color: white;
+}
+
 .home {
-  border: 1px solid red;
+  // border: 1px solid red;
   text-align: center;
   margin: 250px auto;
+  font-family: 'Lato', sans-serif;
+}
+
+.home h1 {
+  font-size: 72px;
+  color: rgba($color: #000000, $alpha: .7);
 }
 
 .background {
@@ -40,9 +58,12 @@ a {
   z-index: -5;
 }
 
+.all-recipes-page h2 {
+  text-align: center;
+}
 
-.wrapper {
-  border: 1px solid red;
+.all-recipes {
+  // border: 1px solid red;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -69,11 +90,11 @@ a {
   border-radius: 6px;
 }
 
-.wrapper a {
+.all-recipes a {
   color: black;
 }
 
-.wrapper a:hover {
+.all-recipes a:hover {
   text-decoration: none;
   transform: scale(1.05);
   color: black;
