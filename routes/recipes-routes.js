@@ -10,57 +10,71 @@ const unirest = require('unirest');
 
 
 
+// router.get('/randomRecipe', (req, res, next) => {
+
+//   var req = unirest("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random");
+
+//   req.query({
+//     "number": "1",
+//     "tags": "dessert"
+//   });
+
+//   req.headers({
+//     "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+//     "x-rapidapi-key": "7dcc32f944mshf83d252c5a63984p1df45fjsna9113f200bf3"
+//   });
+
+//   let recipesModel;
+
+//   req.end(function (res) {
+//     if (res.error) throw new Error(res.error);
+
+//     // console.log(res.body.recipes);
+
+
+//     // the array of recipe objects from the api. we need to 
+//     let recipesFromDB = res.body.recipes;
+//     recipesModel = recipesFromDB.map((recipe) => {
+//       let newObj = {}
+//       newObj.title = recipe.title
+//       newObj.duration = recipe.readyInMinutes
+//       newObj.instructions = recipe.analyzedInstructions[0].steps //analyzed instructions?
+//       newObj.image = recipe.image
+
+//       console.log(newObj.instructions)
+
+//       return newObj
+//     })
+//   });
+
+//   // setTimeout(() => {
+//   //   Recipe.create(recipesModel)
+//   //     .then((randomRecipe) => {
+//   //       // console.log('++++++++++++++++ rando recipe  +++++++++++++', randomRecipe)
+//   //       // res.redirect('/recipes/randomRecipe')
+//   //       res.render('recipes/randomRecipe', {recipe: randomRecipe})
+//   //     })
+//   //     .catch((err) => {
+//   //       next(err);
+//   //     })
+//   // },1000)
+
+// })
+
+
+
+// GET route for a random recipe from our database
 router.get('/randomRecipe', (req, res, next) => {
-
-  var req = unirest("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random");
-
-  req.query({
-    "number": "1",
-    "tags": "dessert"
-  });
-
-  req.headers({
-    "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-    "x-rapidapi-key": "7dcc32f944mshf83d252c5a63984p1df45fjsna9113f200bf3"
-  });
-
-  let recipesModel;
-
-  req.end(function (res) {
-    if (res.error) throw new Error(res.error);
-
-    // console.log(res.body.recipes);
-
-
-    // the array of recipe objects from the api. we need to 
-    let recipesFromDB = res.body.recipes;
-    recipesModel = recipesFromDB.map((recipe) => {
-      let newObj = {}
-      newObj.title = recipe.title
-      newObj.duration = recipe.readyInMinutes
-      newObj.instructions = recipe.analyzedInstructions[0].steps //analyzed instructions?
-      newObj.image = recipe.image
-      
-      console.log(newObj.instructions)
-
-      return newObj
+  // Get the count of all users
+  Recipe.count().exec(function (err, count) {
+    // Get a random entry
+    var random = Math.floor(Math.random() * count)
+    // Again query all users but only fetch one offset by our random #
+    Recipe.findOne().skip(random).exec((err, result) => {
+      res.redirect(`/recipes/details/${result._id}`)
     })
-  });
-
-  // setTimeout(() => {
-  //   Recipe.create(recipesModel)
-  //     .then((randomRecipe) => {
-  //       // console.log('++++++++++++++++ rando recipe  +++++++++++++', randomRecipe)
-  //       // res.redirect('/recipes/randomRecipe')
-  //       res.render('recipes/randomRecipe', {recipe: randomRecipe})
-  //     })
-  //     .catch((err) => {
-  //       next(err);
-  //     })
-  // },1000)
-
+  })
 })
-
 
 
 
@@ -96,22 +110,22 @@ router.post('/new', (req, res, next) => {
   let image = req.body.theImage;
   let author = req.body.theAuthor;
 
-  if(duration )
+  if (duration)
 
-  Recipe.create({
-          title: title,
-          duration: duration,
-          instructions: instructions,
-          image: image,
-          author: author,
-          difficulty: difficulty
-      })
-      .then((result) => {
-          res.redirect('/recipes/all')
-      })
-      .catch((err) => {
-          next(err);
-      })
+    Recipe.create({
+      title: title,
+      duration: duration,
+      instructions: instructions,
+      image: image,
+      author: author,
+      difficulty: difficulty
+    })
+    .then((result) => {
+      res.redirect('/recipes/all')
+    })
+    .catch((err) => {
+      next(err);
+    })
 })
 
 
@@ -119,8 +133,8 @@ router.post('/new', (req, res, next) => {
 
 
 
-router.get('/all', (req,res,next)=> {
-  
+router.get('/all', (req, res, next) => {
+
 
   Recipe.find()
     .then((allTheRecipes) => {
@@ -146,20 +160,22 @@ router.get('/details/:id', (req, res, next) => {
 
   Recipe.findById(id).populate('author')
     .then((theRecipe) => {
-          
-          Comment.find({recipe: id}).populate('author')
-            .then((allComments) => {
-              console.log(theRecipe)
-                res.render('recipes/recipeDetails', {
-                  recipe: theRecipe,
-                  comments: allComments
-                });
 
-              })
-            .catch((err) => {
-              next(err);
-            })
-})
+      Comment.find({
+          recipe: id
+        }).populate('author')
+        .then((allComments) => {
+          // console.log(theRecipe)
+          res.render('recipes/recipeDetails', {
+            recipe: theRecipe,
+            comments: allComments
+          });
+
+        })
+        .catch((err) => {
+          next(err);
+        })
+    })
 
 })
 

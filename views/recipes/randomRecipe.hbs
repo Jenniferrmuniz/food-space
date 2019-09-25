@@ -1,8 +1,12 @@
-
 {{#each recipe}}
 <p> {{this.title}} </p>
 <p> {{this.duration}} minutes</p>
-<p> {{this.instructions}} </p>
+
+<ol>
+    {{#each recipe.instructions}}
+    <li>{{this.step}}</li>
+    {{/each}}
+</ol>
+
 <img src="{{this.image}}" alt="food image">
 {{/each}}
-
