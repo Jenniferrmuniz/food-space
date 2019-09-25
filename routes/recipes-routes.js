@@ -29,7 +29,7 @@ router.get('/randomRecipe', (req, res, next) => {
   req.end(function (res) {
     if (res.error) throw new Error(res.error);
 
-    console.log(res.body.recipes);
+    // console.log(res.body.recipes);
 
 
     // the array of recipe objects from the api. we need to 
@@ -38,27 +38,28 @@ router.get('/randomRecipe', (req, res, next) => {
       let newObj = {}
       newObj.title = recipe.title
       newObj.duration = recipe.readyInMinutes
-      newObj.instructions = recipe.analyzedInstructions //analyzed instructions?
+      newObj.instructions = recipe.analyzedInstructions[0].steps //analyzed instructions?
       newObj.image = recipe.image
       
+      console.log(newObj.instructions)
+
       return newObj
     })
   });
 
-  setTimeout(() => {
-    Recipe.create(recipesModel)
-      .then((randomRecipe) => {
-        console.log('++++++++++++++++ rando recipe  +++++++++++++', randomRecipe)
-        // res.redirect('/recipes/randomRecipe')
-        res.render('recipes/randomRecipe', {recipe: randomRecipe})
-      })
-      .catch((err) => {
-        next(err);
-      })
-  },1000)
+  // setTimeout(() => {
+  //   Recipe.create(recipesModel)
+  //     .then((randomRecipe) => {
+  //       // console.log('++++++++++++++++ rando recipe  +++++++++++++', randomRecipe)
+  //       // res.redirect('/recipes/randomRecipe')
+  //       res.render('recipes/randomRecipe', {recipe: randomRecipe})
+  //     })
+  //     .catch((err) => {
+  //       next(err);
+  //     })
+  // },1000)
 
 })
-
 
 
 

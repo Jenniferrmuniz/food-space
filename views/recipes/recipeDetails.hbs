@@ -13,9 +13,12 @@
             <p>{{recipe.duration}} minutes</p>
 
             <h6>Instructions</h6>
-            {{#each recipe.instructions.steps}}
-            <p>{{this.step}}</p>
+
+            <ol>
+            {{#each recipe.instructions}}
+            <li>{{this.step}}</li>
             {{/each}}
+            </ol>
             {{!-- <p> {{recipe.instructions}} </p> --}}
         </div>
 
