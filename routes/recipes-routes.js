@@ -15,8 +15,8 @@ router.get('/randomRecipe', (req, res, next) => {
   var req = unirest("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random");
 
   req.query({
-    "number": "1",
-    "tags": "dessert"
+    "number": "3",
+    "tags": "breakfast"
   });
 
   req.headers({
@@ -40,11 +40,11 @@ router.get('/randomRecipe', (req, res, next) => {
       newObj.instructions = recipe.analyzedInstructions[0].steps //analyzed instructions?
       newObj.image = recipe.image
 
-      if(newObj.instructions.length < 6){
-        newObj.difficulty = 'Hard'
+      if(newObj.instructions.length < 7){
+        newObj.difficulty = 'Easy'
       }
       else{
-        newObj.difficulty = 'Easy'
+        newObj.difficulty = 'Hard'
       }
 
       return newObj

@@ -12,8 +12,10 @@
             <h6>Total Cook Time</h6>
             <p>{{recipe.duration}} minutes</p>
 
-            <h6>Instructions</h6>
+            <h6>Difficulty</h6>
+            <p>{{recipe.difficulty}}</p>
 
+            <h6>Instructions</h6>
             <ol>
             {{#each recipe.instructions}}
             <li>{{this.step}}</li>

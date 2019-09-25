@@ -1,13 +1,25 @@
+@import url("https://fonts.googleapis.com/css?family=Lato:300,400&display=swap");
 body {
+  padding-top: 70px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
   color: #00B7FF; }
 
+.navbar {
+  background-color: rgba(0, 0, 0, 0.7); }
+
+.spoon {
+  color: white; }
+
 .home {
-  border: 1px solid red;
   text-align: center;
-  margin: 250px auto; }
+  margin: 250px auto;
+  font-family: 'Lato', sans-serif; }
+
+.home h1 {
+  font-size: 72px;
+  color: rgba(0, 0, 0, 0.7); }
 
 .background {
   /* Set rules to fill background */
@@ -22,8 +34,10 @@ a {
   left: 0;
   z-index: -5; }
 
+.all-recipes-page h2 {
+  text-align: center; }
+
 .all-recipes {
-  border: 1px solid red;
   display: flex;
   justify-content: space-around;
   align-items: center;
@@ -45,10 +59,10 @@ a {
   width: 80%;
   border-radius: 6px; }
 
-.wrapper a {
+.all-recipes a {
   color: black; }
 
-.wrapper a:hover {
+.all-recipes a:hover {
   text-decoration: none;
   transform: scale(1.05);
   color: black; }
