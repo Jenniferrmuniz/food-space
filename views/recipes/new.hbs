@@ -1,23 +1,32 @@
 <div class='add-new'>
     <h2> Add a new recipe </h2>
 
-    <form action="/recipes/new" method="POST">
+    <form action="/recipes/new" method="POST" enctype='multipart/form-data' >
 
         <div>
-            <p>Title</p>
-            <input type="text" name='theTitle'>
+            <div>
+                <label for="titleInput">Title</label>
+                <input id="titleInput" type="text" name='theTitle'>
 
-            <p>Duration</p>
-            <input type="text" name='theDuration'>
+            </div>
+
+            <div>
+                <label for="durationInput">Duration</label>
+                <input id='durationInput' type="text" name='theDuration'>
+            </div>
+
+            <div>
+                <label for="theInstructions">Instructions</label>
+                <div id="cookingSteps">
+                    <p class="cookingStepsInput"> Step 1: <input name='instructionInput' id='theInstructions' type='text'></p>
+                </div>
+
+                <button id="addStepButton" type='button' name='add-step'>Add a step</button>
+            </div>
 
 
-            <p>Instructions</p>
-            {{!-- <p>How many steps? <input type='number' name='numOfSteps'></p>
-            
-            <p> Step 1: <input type='text' name='theStep'></p>
 
-            <button>Add a step</button> --}}
-            
+            {{!-- <p>How many steps? <input type='number' name='numOfSteps'></p> --}}
 
 
 
@@ -26,7 +35,7 @@
         {{!-- file upload for images needs to be added below --}}
         <div>
             <p>Image:</p>
-              <input type="file" name="the-image-input-name">
+            <input type="file" name="the-image-input-name">
             {{!-- <input type="text" name='theImage'> --}}
         </div>
 
@@ -39,4 +48,3 @@
 
     </form>
 </div>
-

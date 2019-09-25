@@ -7,7 +7,7 @@ const Comment = require('../models/Comment');
 const axios = require('axios');
 const unirest = require('unirest');
 
-
+const magicUploadTool = require('../config/cloudinary-settings');
 
 
 router.get('/randomRecipe', (req, res, next) => {
@@ -106,24 +106,27 @@ router.get('/new', (req, res, next) => {
 })
 
 
-router.post('/new', (req, res, next) => {
+router.post('/new', magicUploadTool.single('the-image-input-name'), (req, res, next) => {
 
-  
+  console.log("><>><<><><><><><><>>><>< ", req.body);
   let newRecipe = {
     title: req.body.theTitle,
     duration: req.body.theDuration,
-    author: req.body.theAuthor,
-    instructions: req.body.theInstructions,
-    difficulty: req.body.difficulty
+    //author: req.user._id,
+    instructions: req.body.instructionInput,
+    //difficulty: req.body.difficulty
   }
+
+  console.log('=-=-=-', req.file)
 
   if(req.file){
     newRecipe.image = req.file.url;
   }
   
-
-    Recipe.create({newRecipe})
+  console.log("give me the new recipe >>>>>>>>>>>>>>>>>>>>>>>>>> ", newRecipe);
+    Recipe.create(newRecipe)
     .then((result) => {
+      console.log("this is the results ()()()()()()()()()())()()() ", result);
       res.redirect('/recipes/all')
     })
     .catch((err) => {
@@ -163,6 +166,7 @@ router.get('/details/:id', (req, res, next) => {
 
   Recipe.findById(id).populate('author')
     .then((theRecipe) => {
+      console.log(theRecipe)
 
       Comment.find({
           recipe: id

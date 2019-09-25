@@ -18,7 +18,11 @@
             <h6>Instructions</h6>
             <ol>
             {{#each recipe.instructions}}
+            {{#if this.step}}
             <li>{{this.step}}</li>
+            {{else}}
+            <li>{{this}}</li>
+            {{/if}}
             {{/each}}
             </ol>
 
