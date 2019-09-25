@@ -10,75 +10,75 @@ const unirest = require('unirest');
 
 
 
-router.get('/randomRecipe', (req, res, next) => {
+// router.get('/randomRecipe', (req, res, next) => {
 
-  var req = unirest("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random");
+//   var req = unirest("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random");
 
-  req.query({
-    "number": "3",
-    "tags": "breakfast"
-  });
+//   req.query({
+//     "number": "2",
+//     "tags": "lunch"
+//   });
 
-  req.headers({
-    "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
-    "x-rapidapi-key": "7dcc32f944mshf83d252c5a63984p1df45fjsna9113f200bf3"
-  });
+//   req.headers({
+//     "x-rapidapi-host": "spoonacular-recipe-food-nutrition-v1.p.rapidapi.com",
+//     "x-rapidapi-key": "7dcc32f944mshf83d252c5a63984p1df45fjsna9113f200bf3"
+//   });
 
-  let recipesModel;
+//   let recipesModel;
 
-  req.end(function (res) {
-    if (res.error) throw new Error(res.error);
+//   req.end(function (res) {
+//     if (res.error) throw new Error(res.error);
 
 
 
-    // the array of recipe objects from the api. we need to 
-    let recipesFromDB = res.body.recipes;
-    recipesModel = recipesFromDB.map((recipe) => {
-      let newObj = {}
-      newObj.title = recipe.title
-      newObj.duration = recipe.readyInMinutes
-      newObj.instructions = recipe.analyzedInstructions[0].steps //analyzed instructions?
-      newObj.image = recipe.image
+//     // the array of recipe objects from the api. we need to 
+//     let recipesFromDB = res.body.recipes;
+//     recipesModel = recipesFromDB.map((recipe) => {
+//       let newObj = {}
+//       newObj.title = recipe.title
+//       newObj.duration = recipe.readyInMinutes
+//       newObj.instructions = recipe.analyzedInstructions[0].steps //analyzed instructions?
+//       newObj.image = recipe.image
 
-      if(newObj.instructions.length < 7){
-        newObj.difficulty = 'Easy'
-      }
-      else{
-        newObj.difficulty = 'Hard'
-      }
+//       if(newObj.instructions.length < 7){
+//         newObj.difficulty = 'Easy'
+//       }
+//       else{
+//         newObj.difficulty = 'Hard'
+//       }
 
-      return newObj
-    })
-  });
+//       return newObj
+//     })
+//   });
 
-  setTimeout(() => {
-    Recipe.create(recipesModel)
-      .then((randomRecipe) => {
-        // console.log('++++++++++++++++ rando recipe  +++++++++++++', randomRecipe)
-        // res.redirect('/recipes/randomRecipe')
-        res.render('recipes/randomRecipe', {recipe: randomRecipe})
-      })
-      .catch((err) => {
-        next(err);
-      })
-  },1000)
+//   setTimeout(() => {
+//     Recipe.create(recipesModel)
+//       .then((randomRecipe) => {
+//         // console.log('++++++++++++++++ rando recipe  +++++++++++++', randomRecipe)
+//         // res.redirect('/recipes/randomRecipe')
+//         res.render('recipes/randomRecipe', {recipe: randomRecipe})
+//       })
+//       .catch((err) => {
+//         next(err);
+//       })
+//   },1000)
 
-})
+// })
 
 
 
 // GET route for a random recipe from our database
-// router.get('/randomRecipe', (req, res, next) => {
-//   // Get the count of all users
-//   Recipe.count().exec(function (err, count) {
-//     // Get a random entry
-//     var random = Math.floor(Math.random() * count)
-//     // Again query all users but only fetch one offset by our random #
-//     Recipe.findOne().skip(random).exec((err, result) => {
-//       res.redirect(`/recipes/details/${result._id}`)
-//     })
-//   })
-// })
+router.get('/randomRecipe', (req, res, next) => {
+  // Get the count of all users
+  Recipe.count().exec(function (err, count) {
+    // Get a random entry
+    var random = Math.floor(Math.random() * count)
+    // Again query all users but only fetch one offset by our random #
+    Recipe.findOne().skip(random).exec((err, result) => {
+      res.redirect(`/recipes/details/${result._id}`)
+    })
+  })
+})
 
 
 
