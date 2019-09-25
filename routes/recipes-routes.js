@@ -144,8 +144,6 @@ router.get('/all', (req,res,next)=> {
 
 
 
-
-
 // GET: recipe details page
 router.get('/details/:id', (req, res, next) => {
   let id = req.params.id;
