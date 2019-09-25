@@ -1,15 +1,8 @@
-<<<<<<< HEAD
-{{#each users}}
-
-{{#if chosen}}
-<p>{{this.username}}</p>
-=======
 
 {{#if recipe.author}}
 <h6> Recipe created by: {{recipe.author.username}} </h6>
 {{else}}
 <h6> Recipe creator unknown </h6>
->>>>>>> d736038b0a7e5ae260c26958999c24bc01b4f310
 {{/if}}
 
 <div class='recipe-card'>
@@ -38,21 +31,9 @@
 {{/if}}
 
 {{#each comments}}
-<<<<<<< HEAD
-    {{#if this.chosen}}
-        <p>{{this.comment}}</p>
-        {{#each users}}
-            {{#if this.commentChosen}}
-                <p>{{this.author}}</p>
-            {{/if}}
-        {{/each}}
-    {{/if}}
-{{/each}}
-=======
 
 <p>{{this.comment}}</p>
 <p>{{this.author.username}}</p>
 
 {{/each}}
 
->>>>>>> d736038b0a7e5ae260c26958999c24bc01b4f310
