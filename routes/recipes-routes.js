@@ -139,55 +139,32 @@ router.get('/details/:id', (req, res, next) => {
   let id = req.params.id;
 
 
-  Recipe.findById(id)
+  Recipe.findById(id).populate('author')
     .then((theRecipe) => {
 
       console.log(theRecipe);
 
-      User.find()
-        .then((allUsers) => {
 
-          Comment.find()
+
+          Comment.find({recipe: id}).populate('author')
             .then((allComments) => {
 
-              // Find all of the comments associated with this recipe
-              allComments.forEach((eachComment) => {
-                if (eachComment.recipe.equals(theRecipe._id)) {
-                  eachComment.chosen = true;
-                }
 
-                allUsers.forEach((eachUser) => {
+              console.log(allComments)
+             
 
-                  // Find the user that authored the recipe
-                  if (eachUser._id.equals(theRecipe.author)) {
-                    eachUser.chosen = true;
-                  }
 
-                  // Find the users that authored the comments
-                  if (eachUser._id.equals(eachComment.author)) {
-                    eachUser.commentChosen = true;
-                  }
-                })
+                res.render('recipes/recipeDetails', {
+                  recipe: theRecipe,
+                  comments: allComments
+                });
+
               })
-
-              res.render('recipes/recipeDetails', {
-                recipe: theRecipe,
-                users: allUsers,
-                comments: allComments
-              });
-
-            })
             .catch((err) => {
               next(err);
             })
-        })
-        .catch((err) => {
-          next(err);
-        })
-    })
-    .catch((err) => {
-      next(err);
-    })
+})
+
 })
 
 
