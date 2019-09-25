@@ -10,14 +10,24 @@
             <p>Duration</p>
             <input type="text" name='theDuration'>
 
+
             <p>Instructions</p>
-            <input type="text" name='theInstructions'>
+            {{!-- <p>How many steps? <input type='number' name='numOfSteps'></p>
+            
+            <p> Step 1: <input type='text' name='theStep'></p>
+
+            <button>Add a step</button> --}}
+            
+
+
+
         </div>
 
         {{!-- file upload for images needs to be added below --}}
         <div>
             <p>Image:</p>
-            <input type="text" name='theImage'>
+              <input type="file" name="the-image-input-name">
+            {{!-- <input type="text" name='theImage'> --}}
         </div>
 
         <input type='hidden' name='theAuthor' value='{{theUser._id}}'>

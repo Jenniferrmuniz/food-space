@@ -108,29 +108,21 @@ router.get('/new', (req, res, next) => {
 
 router.post('/new', (req, res, next) => {
 
-  let title = req.body.theTitle;
-  let duration = req.body.theDuration;
-  let instructions = req.body.theInstructions;
-  let image = req.body.theImage;
-  let author = req.body.theAuthor;
+  
+  let newRecipe = {
+    title: req.body.theTitle,
+    duration: req.body.theDuration,
+    author: req.body.theAuthor,
+    instructions: req.body.theInstructions,
+    difficulty: req.body.difficulty
+  }
 
-
-  // if(newObj.instructions.length < 6){
-  //   newObj.difficulty = 'Hard'
-  // }
-  // else{
-  //   newObj.difficulty = 'Easy'
-  // }
+  if(req.file){
+    newRecipe.image = req.file.url;
+  }
   
 
-    Recipe.create({
-      title: title,
-      duration: duration,
-      instructions: instructions,
-      image: image,
-      author: author,
-      difficulty: difficulty
-    })
+    Recipe.create({newRecipe})
     .then((result) => {
       res.redirect('/recipes/all')
     })
