@@ -2,10 +2,13 @@
 
 <div class='wrapper'>
     {{#each recipes}}
+    <a href="/recipes/details/{{this._id}}">
     <div class='recipe-card'>
-        <h4> <a href="/recipes/details/{{this._id}}">{{this.title}}</a></h4>
+        <h4> {{this.title}} </h4>
 
         <img src="{{this.image}}" alt="food image">
     </div>
+    </a>
+
     {{/each}}
 </div>
