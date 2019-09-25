@@ -1,11 +1,9 @@
 
-{{#each users}}
-
-{{#if chosen}}
-<p>{{this.username}}</p>
+{{#if recipe.author}}
+<h6> Recipe created by: {{recipe.author.username}} </h6>
+{{else}}
+<h6> Recipe creator unknown </h6>
 {{/if}}
-
-{{/each}}
 
 <div class='recipe-card'>
     <div class='recipe-text'>

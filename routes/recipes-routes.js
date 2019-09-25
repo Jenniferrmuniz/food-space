@@ -92,12 +92,14 @@ router.post('/new', (req, res, next) => {
   let duration = req.body.theDuration;
   let instructions = req.body.theInstructions;
   let image = req.body.theImage;
+  let author = req.body.theAuthor;
 
   Recipe.create({
           title: title,
           duration: duration,
           instructions: instructions,
-          image: image
+          image: image,
+          author: author
       })
       .then((result) => {
           res.redirect('/recipes/all')
@@ -141,19 +143,10 @@ router.get('/details/:id', (req, res, next) => {
 
   Recipe.findById(id).populate('author')
     .then((theRecipe) => {
-
-      console.log(theRecipe);
-
-
-
+          
           Comment.find({recipe: id}).populate('author')
             .then((allComments) => {
-
-
-              console.log(allComments)
-             
-
-
+              console.log(theRecipe)
                 res.render('recipes/recipeDetails', {
                   recipe: theRecipe,
                   comments: allComments

@@ -14,12 +14,14 @@
             <input type="text" name='theInstructions'>
         </div>
 
-
         {{!-- file upload for images needs to be added below --}}
         <div>
             <p>Image:</p>
             <input type="text" name='theImage'>
         </div>
+
+        <input type='hidden' name='theAuthor' value='{{theUser._id}}'>
+
 
         <div>
             <button type="submit">SAVE</button>
