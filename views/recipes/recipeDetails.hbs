@@ -13,10 +13,13 @@
             <p>{{recipe.duration}} minutes</p>
 
             <h6>Instructions</h6>
-            {{#each recipe.instructions.steps}}
-            <p>{{this.step}}</p>
+
+            <ol>
+            {{#each recipe.instructions}}
+            <li>{{this.step}}</li>
             {{/each}}
-            {{!-- <p> {{recipe.instructions}} </p> --}}
+            </ol>
+
         </div>
 
         <img src="{{recipe.image}}" alt="food image">
