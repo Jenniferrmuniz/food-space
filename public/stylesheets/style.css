@@ -1,2 +1,51 @@
+body {
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
+
+a {
+  color: #00B7FF; }
+
+.wrapper {
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap; }
+
+.recipe-card {
+  width: 300px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba(255, 255, 0, 0.6);
+  margin: 10px;
+  border-radius: 12px;
+  text-align: center; }
+
+.recipe-card img {
+  width: 80%;
+  border-radius: 6px; }
+
+.wrapper a {
+  color: black; }
+
+.wrapper a:hover {
+  text-decoration: none;
+  transform: scale(1.05);
+  color: black; }
+
+.details-wrapper {
+  margin: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: rgba(255, 0, 128, 0.4); }
+
+.details-card img {
+  border-radius: 6px; }
 
 /*# sourceMappingURL=style.css.map */

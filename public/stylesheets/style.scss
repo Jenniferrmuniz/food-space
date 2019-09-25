@@ -1,3 +1,70 @@
+// yellow #FFFF00  255, 255, 0
+// green #00FF80   0, 255, 128
+// blue #0000FF   0, 0, 255
+// pink #FF0080    255, 0, 128
+
+body {
+  // padding: 0px;
+  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+
+}
+
+a {
+  color: #00B7FF;
+}
+
+.wrapper {
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap;
+}
+
+.recipe-card {
+  // border: 1px solid blue;
+  width: 300px;
+  height: 350px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  background-color: rgba($color: #FFFF00, $alpha: .6);
+  margin: 10px;
+  border-radius: 12px;
+  text-align: center;
+  // background-color: 
+}
+
+.recipe-card img {
+  width: 80%;
+  border-radius: 6px;
+}
+
+.wrapper a {
+  color: black;
+}
+
+.wrapper a:hover {
+  text-decoration: none;
+  transform: scale(1.05);
+  color: black;
+}
+
+.details-wrapper {
+  margin: 20px;
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-direction: column;
+  padding: 20px;
+  border-radius: 12px;
+  background-color: rgba($color: #FF0080, $alpha: .4);
+}
+
+.details-card img {
+  border-radius: 6px;
+}
 
 
 

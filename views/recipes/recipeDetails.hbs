@@ -1,39 +1,42 @@
+<div class='details-wrapper'>
+    {{#if recipe.author}}
+    <h6> Recipe created by: <a href='/user/{{recipe.author._id}}'>{{recipe.author.username}} </a></h6>
+    {{else}}
+    <h6> Recipe creator unknown </h6>
+    {{/if}}
 
-{{#if recipe.author}}
-<h6> Recipe created by: <a href='/user/{{recipe.author._id}}'>{{recipe.author.username}} </a></h6>
-{{else}}
-<h6> Recipe creator unknown </h6>
-{{/if}}
+    <div class='details-card'>
+        <div class='details-text'>
+            <h3> {{recipe.title}}</h3>
 
-<div class='recipe-card'>
-    <div class='recipe-text'>
-        <h3> {{recipe.title}}</h3>
+            <h6>Total Cook Time</h6>
+            <p>{{recipe.duration}} minutes</p>
 
-        <h6>Total Cook Time</h6>
-        <p>{{recipe.duration}} minutes</p>
+            <h6>Instructions</h6>
+            <p> {{recipe.instructions}} </p>
+        </div>
 
-        <h6>Instructions</h6>
-        <p> {{recipe.instructions}} </p>
+        <img src="{{recipe.image}}" alt="food image">
     </div>
 
-    <img src="{{recipe.image}}" alt="food image">
-</div>
 
 
-
-{{#if theUser}}
+    {{#if theUser}}
     <form action='/comments/recipe/{{recipe._id}}' method='POST'>
         <input type='text' name='theComment'>
         <input type='hidden' name='theAuthor' value='{{theUser._id}}'>
         <input type='hidden' name='theRecipe' value='{{recipe._id}}'>
         <button type='submit'>Submit comment</button>
     </form>
-{{/if}}
+    {{/if}}
 
-{{#each comments}}
+    {{#each comments}}
 
-<p>{{this.comment}}</p>
-<p> <a href='/user/{{this.author._id}}'>{{this.author.username}} </a> </p>
+    <p>{{this.comment}}</p>
+    <p> <a href='/user/{{this.author._id}}'>{{this.author.username}} </a> </p>
 
-{{/each}}
+    {{/each}}
 
+
+
+</div>

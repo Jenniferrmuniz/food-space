@@ -5,7 +5,7 @@ const recipeSchema = new Schema({
 
   author: {type: Schema.Types.ObjectId, ref: 'User'},
   title: String,
-  instructions: String,
+  instructions: Array,
   image: String, //(image upload from breakout session W5D4)
   duration: Number,
   difficulty: String
