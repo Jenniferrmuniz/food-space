@@ -9,7 +9,7 @@ const bcrypt = require("bcryptjs");
 const bcryptSalt = 10;
 const passport = require('passport');
 
-
+const magicUploadTool = require('../config/cloudinary-settings');
 
 
 
@@ -25,10 +25,10 @@ router.get('/signup', (req, res, next) => {
 })
 
 
-
+router.post('/signup', magicUploadTool.single('the-image-input-name'), (req, res, next) => {
 
 // POST: create user with info from sign up page
-router.post('/signup', (req, res, next) => {
+//router.post('/signup', (req, res, next) => {
 
   let username = req.body.theUsername;
   let password = req.body.thePassword;
@@ -40,6 +40,11 @@ router.post('/signup', (req, res, next) => {
     password: hashPass
   }
 
+  console.log(req.file);
+
+  // if(req.body['the-image-input-name']){
+  //   newUser.profileImage = req.body['the-image-input-name'];
+  // }
   if(req.file){
     newUser.profileImage = req.file.url;
   }
