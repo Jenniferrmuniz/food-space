@@ -7,7 +7,8 @@ const recipeSchema = new Schema({
   title: String,
   instructions: String,
   image: String, //(image upload from breakout session W5D4)
-  duration: Number
+  duration: Number,
+  difficulty: String
 })
 
 const Recipe = mongoose.model('Recipe', recipeSchema);

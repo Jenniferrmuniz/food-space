@@ -94,12 +94,15 @@ router.post('/new', (req, res, next) => {
   let image = req.body.theImage;
   let author = req.body.theAuthor;
 
+  if(duration )
+
   Recipe.create({
           title: title,
           duration: duration,
           instructions: instructions,
           image: image,
-          author: author
+          author: author,
+          difficulty: difficulty
       })
       .then((result) => {
           res.redirect('/recipes/all')
