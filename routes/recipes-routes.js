@@ -312,7 +312,7 @@ router.get('/update/:id', (req, res, next) => {
 router.post('/update/:id', magicUploadTool.single('the-image-input-name'), (req, res, next) => {
   let id = req.params.id;
 
-console.log('############@@@@@@', req.body)
+// console.log('############@@@@@@', req.body)
 
   let updateRecipe = {
     title: req.body.theTitle,

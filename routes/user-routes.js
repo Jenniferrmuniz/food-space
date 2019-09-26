@@ -43,7 +43,6 @@ router.post('/signup', magicUploadTool.single('the-image-input-name'), (req, res
 
 
 
-
   // if(req.body['the-image-input-name']){
   //   newUser.profileImage = req.body['the-image-input-name'];
   // }
@@ -54,8 +53,19 @@ router.post('/signup', magicUploadTool.single('the-image-input-name'), (req, res
 
   User.create(newUser)
     .then((result) => {
+      // console.log(result)
+      //if no user then do the auto login when signing up
+      if (!req.user) {
+        req.login(result, function (err, user) {
+          if (!err) {
+            res.redirect(`/user/${result._id}`);
+          } else {
+            next(err);
+          }
+        })
+      }
 
-      res.redirect('/recipes/recommended');
+      // res.redirect('/recipes/recommended');
 
     })
     .catch((err) => {
@@ -121,7 +131,7 @@ router.get('/:id', (req, res, next) => {
 
           // // Find recipes that were created by the profile owner
           allRecipes.forEach((eachRecipe) => {
-            console.log(eachRecipe);
+            // console.log(eachRecipe);
 
 
 
