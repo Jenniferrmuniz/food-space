@@ -241,19 +241,17 @@ router.get('/details/:id', (req, res, next) => {
 
 
 // GET: recipe to be deleted and remove it from the DB
-router.get('/delete/:id', (req, res, next) => {
+router.post('/delete/:id', (req, res, next) => {
   let id = req.params.id;
 
   Recipe.findByIdAndRemove(id)
     .then((result) => {
-      res.redirect('/');
+      res.redirect('/recipes/all');
     })
     .catch((err) => {
       next(err);
     })
 })
-
-
 
 
 
@@ -314,11 +312,13 @@ router.get('/update/:id', (req, res, next) => {
 router.post('/update/:id', magicUploadTool.single('the-image-input-name'), (req, res, next) => {
   let id = req.params.id;
 
+console.log('############@@@@@@', req.body)
+
   let updateRecipe = {
-    name: req.body.theName,
-    description: req.body.theDescription,
-    image: req.body.theImage,
-    duration: req.body.theDuration
+    title: req.body.theTitle,
+    duration: req.body.theDuration,
+    difficulty: req.body.theDifficulty,
+    instructions: req.body.instructionInput
   }
 
   if(req.file){
@@ -327,7 +327,7 @@ router.post('/update/:id', magicUploadTool.single('the-image-input-name'), (req,
 
   Recipe.findByIdAndUpdate(id, updateRecipe)
     .then((result) => {
-      res.redirect('/recipes/' + id);
+      res.redirect('/recipes/details/' + id);
     })
     .catch((err) => {
       next(err);
