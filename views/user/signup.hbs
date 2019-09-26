@@ -16,26 +16,24 @@
   <input type="password" name="thePassword">
 
 
+  <div class='upload-section'>
+    {{!-- <p>Profile Picture</p>
+  <input type="file" name="the-image-input-name"> --}}
 
-  <p>Profile Picture</p>
-  <input type="file" name="the-image-input-name">
+    <div>
+      <label> Experience
+        <span>
+          <select name="theExperience">
+            <option value="" selected disabled> Select One </option>
+            <option value="Amateur">Amateur</option>
+            <option value="Professional">Professional</option>
+          </select>
+        </span>
+      </label>
+    </div>
 
-  <div>
-    <label>Experience</label>
-    <br>
-    <select name="theExperience">
-
-      <option value="" selected disabled>Please Select One</option>
-      <option value="Amateur">Amateur</option>
-      <option value="Professional">Professional</option>
-
-
-    </select>
   </div>
 
-  {{!-- {{#if errorMessage }}
-    <div class="error-message">{{ errorMessage }}</div>
-  {{/if}} --}}
   <br>
   <button type='submit'>Sign Up</button>
 

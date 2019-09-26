@@ -116,14 +116,13 @@ a {
   color: #00f7ff; }
 
 #signup-form {
-  margin: 30px auto;
+  margin: 170px auto 0px;
   width: 380px; }
 
 #signup-form label {
   color: #666;
   display: inline-block;
   margin-bottom: 10px;
-  text-align: center;
   width: 100%; }
 
 #signup-form input,
@@ -155,7 +154,7 @@ a {
   transition: .3s ease background; }
 
 #login-form {
-  margin: 175px auto;
+  margin: 175px auto 0px;
   width: 380px; }
 
 #login-form label {
@@ -197,5 +196,15 @@ a {
   font-size: 96px;
   font-family: 'Dancing Script', cursive;
   text-align: center; }
+
+.upload-section {
+  display: flex;
+  flex-wrap: wrap; }
+
+.profile-wrapper {
+  margin: auto;
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-around; }
 
 /*# sourceMappingURL=style.css.map */

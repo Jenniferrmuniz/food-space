@@ -42,13 +42,11 @@ router.post('/signup', magicUploadTool.single('the-image-input-name'), (req, res
   }
 
 
-
   // if(req.body['the-image-input-name']){
   //   newUser.profileImage = req.body['the-image-input-name'];
   // }
 
-  
-  if(req.file){
+  if (req.file) {
     newUser.profileImage = req.file.url;
   }
 
@@ -62,10 +60,6 @@ router.post('/signup', magicUploadTool.single('the-image-input-name'), (req, res
       next(err);
     })
 })
-
-
-
-
 
 
 
@@ -118,7 +112,7 @@ router.get('/:id', (req, res, next) => {
   User.findById(id)
     .then((userData) => {
 
-      
+
 
       Recipe.find()
         .then((allRecipes) => {
@@ -129,7 +123,7 @@ router.get('/:id', (req, res, next) => {
 
 
 
-            if(eachRecipe.author){
+            if (eachRecipe.author) {
               if (eachRecipe.author.equals(id)) {
                 eachRecipe.recipeChosen = true;
               }
@@ -139,17 +133,19 @@ router.get('/:id', (req, res, next) => {
           })
 
           // // Check if it is the profile of the user that is logged in
-          if(req.user){
+          if (req.user) {
             if (req.user._id.equals(id)) {
               req.user.profileOwner = true;
-            }
-            else {
+            } else {
               req.user.profileOwner = false;
             }
           }
 
 
-          res.render('user/profile', {allRecipes: allRecipes, profileInfo: userData});
+          res.render('user/profile', {
+            allRecipes: allRecipes,
+            profileInfo: userData
+          });
 
         })
         .catch((err) => {
@@ -161,7 +157,20 @@ router.get('/:id', (req, res, next) => {
 })
 
 
+router.post('/:id', magicUploadTool.single('the-image-input-name'),(req, res, next) => {
+  let id = req.params.id;
 
+
+  User.findByIdAndUpdate(id, {profileImage: req.file.url} )
+    .then((me) => {
+      
+      res.redirect(`/user/${me._id}`);
+    })
+    .catch((err) => {
+      next(err);
+    })
+
+})
 
 
 

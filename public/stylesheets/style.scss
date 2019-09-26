@@ -168,7 +168,7 @@ a {
 }
 
 #signup-form {
-  margin: 30px auto;
+  margin: 170px auto 0px;
   width: 380px;
 }
 
@@ -176,7 +176,7 @@ a {
   color: #666;
   display: inline-block;
   margin-bottom: 10px;
-  text-align: center;
+  // text-align: center;
   width: 100%;
 }
 
@@ -211,10 +211,8 @@ a {
   transition: .3s ease background;
 }
 
-
-
 #login-form {
-  margin: 175px auto;
+  margin: 175px auto 0px;
   width: 380px;
 }
 
@@ -262,4 +260,16 @@ a {
   font-size: 96px;
   font-family: 'Dancing Script', cursive;
   text-align: center;
+}
+
+.upload-section {
+  display: flex;
+  flex-wrap: wrap;
+}
+
+.profile-wrapper {
+  margin: auto;
+  border: 1px solid red;
+  display: flex;
+  justify-content: space-around;
 }
