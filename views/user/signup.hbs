@@ -17,15 +17,27 @@
   <p>Profile Picture</p>
   <input type="file" name="the-image-input-name">
 
-  
+  <div>
+    <label>Experience</label>
+    <br>
+    <select name="theExperience">
+
+      <option value="" selected disabled>Please Select One</option>
+      <option value="Amateur">Amateur</option>
+      <option value="Professional">Professional</option>
+
+
+    </select>
+  </div>
+
   {{!-- {{#if errorMessage }}
     <div class="error-message">{{ errorMessage }}</div>
   {{/if}} --}}
-
+  <br>
   <button type='submit'>Sign Up</button>
 
 
-{{!-- google signup if we want to add later --}}
+  {{!-- google signup if we want to add later --}}
 
   {{!-- {{#unless user}}
   <div>

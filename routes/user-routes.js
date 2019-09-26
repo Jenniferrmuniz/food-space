@@ -31,12 +31,14 @@ router.post('/signup', magicUploadTool.single('the-image-input-name'), (req, res
 
   let username = req.body.theUsername;
   let password = req.body.thePassword;
+  let experience = req.body.theExperience;
   let salt = bcrypt.genSaltSync(bcryptSalt);
   let hashPass = bcrypt.hashSync(password, salt);
 
   let newUser = {
     username: username,
-    password: hashPass
+    password: hashPass,
+    experience: experience
   }
 
 
