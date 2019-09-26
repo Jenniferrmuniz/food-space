@@ -1,2 +1,27 @@
-<h1>RECOMMENDED</h1>
+
+{{!-- if the user's experience is amateur, show 'Easy' difficulty recipes
+else if the user's exp is professional, show 'Hard' difficulty recipes --}}
+
+<div class='recipes-wrapper'>
+
+    <h2> Recommended Recipes</h2>
+
+  <img class='background'
+    {{!-- src="https://images.unsplash.com/photo-1523049673857-eb18f1d7b578?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1568&q=80" --}}
+    src="https://images.unsplash.com/photo-1488477181946-6428a0291777?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=668&q=80"
+    alt="berries image">
+
+    <div class='recipes-list'>
+        {{#each recipes}}
+        <a href="/recipes/details/{{this._id}}">
+            <div class='recipe-card'>
+                <h4> {{this.title}} </h4>
+
+                <img src="{{this.image}}" alt="food image">
+            </div>
+        </a>
+        {{/each}}
+    </div>
+</div>
+
 

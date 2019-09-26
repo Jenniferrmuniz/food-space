@@ -15,31 +15,37 @@
             <label for='difficultyInput'>Edit Difficulty:</label>
             <select id='difficultyInput' name='theDifficulty'>
                 <option value='unspecfied'> -- Please select difficulty level -- </option>
-                <option value='Easy'>Easy</option>
+                
+                {{#if recipe.easy}}
+                <option value='Easy' selected>Easy</option>
                 <option value='Hard'>Hard</option>
+                {{else}}
+                <option value='Easy'>Easy</option>
+                <option value='Hard' selected>Hard</option>
+                {{/if}}
             </select>
         </div>
 
         <p style='display:none' id='recipe-id'>{{recipe._id}}</p>
 
-        {{!-- <div>
+
+        <div>
             <label for="theInstructions">Edit Instructions</label>
             {{#each recipe.instructions}}
             <div id="cookingSteps">
-                <p class="cookingStepsInput"> Step: {{@index}}<input name='instructionInput' id='theInstructions' type='text'></p>
+                <p>
+                <span class="cookingStepsInput"> </span>
+                <input  value='{{this}}'name='instructionInput' id='theInstructions' type='text'>
+                </p>
+
+            <button type="button" class='deleteBtn'>Delete this step</button>
             </div>
-            <button class='deleteBtn'>Delete this step</button>
             {{/each}}
 
             <button id="addStepButton" type='button' name='add-step'>Add a step</button>
 
-        </div> --}}
+        </div>
 
-
-
-
-        <p>Edit Instructions</p>
-        <input type="text" name='theInstructions' value='{{recipe.instructions}}'>
 
 
         {{!-- file upload added here --}}

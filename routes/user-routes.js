@@ -31,19 +31,24 @@ router.post('/signup', magicUploadTool.single('the-image-input-name'), (req, res
 
   let username = req.body.theUsername;
   let password = req.body.thePassword;
+  let experience = req.body.theExperience;
   let salt = bcrypt.genSaltSync(bcryptSalt);
   let hashPass = bcrypt.hashSync(password, salt);
 
   let newUser = {
     username: username,
-    password: hashPass
+    password: hashPass,
+    experience: experience
   }
+
 
 
 
   // if(req.body['the-image-input-name']){
   //   newUser.profileImage = req.body['the-image-input-name'];
   // }
+
+  
   if(req.file){
     newUser.profileImage = req.file.url;
   }
@@ -51,7 +56,7 @@ router.post('/signup', magicUploadTool.single('the-image-input-name'), (req, res
   User.create(newUser)
     .then((result) => {
 
-      res.redirect('/recipes');
+      res.redirect('/recipes/recommended');
 
     })
     .catch((err) => {
@@ -77,7 +82,7 @@ router.get('/login', (req, res, next) => {
 
 // POST: use info from login page to login
 router.post("/login", passport.authenticate("local", {
-  successRedirect: "/recipes",
+  successRedirect: "/recipes/recommended",
   failureRedirect: "/user/login",
   failureFlash: true,
   passReqToCallback: true

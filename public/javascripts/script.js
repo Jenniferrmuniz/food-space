@@ -1,10 +1,15 @@
-import axios from "axios";
+
 
 // import { log } from "util";
 
 document.addEventListener('DOMContentLoaded', () => {
 
   console.log('IronGenerator JS imported successfully!');
+
+  let spans = document.getElementsByClassName('cookingStepsInput');
+  for(let i=0; i<spans.length; i++){
+    spans[i].innerHTML = 'Step: '+ Number(i+1);
+  }
   
   
 }, false);
@@ -36,19 +41,37 @@ document.querySelector("#addStepButton").onclick = function(){
 
 
 
-// let btns = document.querySelectorAll(".deleteBtn")
-// let id = document.getElementById('recipe-id').innerHTML
-// for(let i=0; i<btns.length; i++ ){
+let btns = document.querySelectorAll(".deleteBtn")
+let id = document.getElementById('recipe-id').innerHTML
+for(let i=0; i<btns.length; i++ ){
 
-//   btns[i].onclick = function(){
-//     axios.post(`http://localhost:3000/recipes/${id}/step/${i}`)
-//     .then(()=>{
-//       console.log('yay')
-//     })
-//     .catch((err)=>{
-//       console.log(err);
-//     })
-//   }
+  btns[i].onclick = function(e){
+
+    
+       axios.post(`http://localhost:3000/recipes/deletestep/${id}/step/${i}`, {})
+      .then((x)=>{
+      
+      
+        btns[i].parentElement.remove()
+
+        let spans = document.getElementsByClassName('cookingStepsInput');
+
+        for(let i=0; i<spans.length; i++){
+          spans[i].innerHTML = 'Step: '+ Number(i+1);
+        }
 
 
-// }
+   
+    })
+    .catch((err)=>{
+      console.log(err);
+    })
+  }
+
+
+ }
+function goBack() {
+  window.history.back();
+}
+// go back button
+

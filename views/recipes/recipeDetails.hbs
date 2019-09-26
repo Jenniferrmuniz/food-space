@@ -7,15 +7,22 @@
 
 
     <div class='details-text'>
-        {{#if recipe.author}}
-        <h6> Recipe created by: <a href='/user/{{recipe.author._id}}'>{{recipe.author.username}} </a></h6>
-        {{else}}
-        <h6> Recipe creator unknown </h6>
-        {{/if}}
+
+        {{!-- page back button  --}}
+        <a href="#" onclick="goBack()"> Back </a>
+
+
         <div class='details-card'>
             <div>
-                <h3> {{recipe.title}}</h3>
+                <h1> {{recipe.title}}</h1>
 
+                {{#if recipe.author}}
+                <h6> Recipe created by: <a href='/user/{{recipe.author._id}}'>{{recipe.author.username}} </a></h6>
+                {{else}}
+                <h6> Recipe creator unknown </h6>
+                {{/if}}
+
+                <br>
 
                 <h6>Total Cook Time</h6>
                 <p>{{recipe.duration}} minutes</p>

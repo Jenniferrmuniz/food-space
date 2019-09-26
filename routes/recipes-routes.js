@@ -10,13 +10,36 @@ const unirest = require('unirest');
 const magicUploadTool = require('../config/cloudinary-settings');
 
 
+
+
+router.post('/deletestep/:recipeid/step/:index', (req, res, next) =>{
+  Recipe.findById(req.params.recipeid)
+  .then((recipe) => {
+
+    let step = recipe.instructions[req.params.index];
+
+    Recipe.findByIdAndUpdate(req.params.recipeid, {$pull: {instructions: step}})
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      next(err);
+    })
+
+  })
+  .catch((err)=>{
+    next(err);
+  })
+})
+
+
 // router.get('/randomRecipe', (req, res, next) => {
 
 //   var req = unirest("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random");
 
 //   req.query({
 //     "number": "2",
-//     "tags": "lunch"
+//     "tags": "breakfast"
 //   });
 
 //   req.headers({
@@ -82,11 +105,22 @@ router.get('/randomRecipe', (req, res, next) => {
 
 
 
-/* GET home page */
-router.get('/', (req, res, next) => {
+/* GET recommended page */
+router.get('/recommended', (req, res, next) => {
 
+  // logic for recommended page 
 
-  Recipe.find()
+  let difficulty;
+
+  if(req.user.experience === 'Amateur'){
+    difficulty = 'Easy';
+  }
+  if(req.user.experience === 'Professional'){
+    difficulty = 'Hard'
+  }
+
+// passing a difficulty object here will only find the recipes with that difficulty key:value 
+  Recipe.find({difficulty:difficulty})
     .then((recommendedRecipes) => {
 
       res.render('recipes/recommended', {
@@ -173,10 +207,18 @@ router.get('/details/:id', (req, res, next) => {
         .then((allComments) => {
           
           if(req.user){
-   
-            if(theRecipe.author.equals(req.user._id)){
+
+
+            if(theRecipe.author){
+
+              if(theRecipe.author.equals(req.user._id)){
                 theRecipe.mine = true;
             }
+
+            }
+
+
+
         }
 
 
@@ -286,15 +328,7 @@ router.post('/update/:id', (req, res, next) => {
 
 
 
-// router.post('/:recipe-id/step/:index', (req, res, next) =>{
-//   Recipe.findById(req.params.recipe-id)
-//   .then((recipe) => {
-//     recipe.instructions = recipe.instructions.splice(req.params.index, 1)
-//   })
-//   .catch((err)=>{
-//     next(err);
-//   })
-// })
+
 
 
 
