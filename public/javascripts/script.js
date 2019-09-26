@@ -31,3 +31,8 @@ document.querySelector("#addStepButton").onclick = function(){
 };    
 
 
+function goBack() {
+  window.history.back();
+}
+// go back button
+

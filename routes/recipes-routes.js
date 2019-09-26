@@ -16,7 +16,7 @@ const magicUploadTool = require('../config/cloudinary-settings');
 
 //   req.query({
 //     "number": "2",
-//     "tags": "lunch"
+//     "tags": "breakfast"
 //   });
 
 //   req.headers({
@@ -82,11 +82,22 @@ router.get('/randomRecipe', (req, res, next) => {
 
 
 
-/* GET home page */
-router.get('/', (req, res, next) => {
+/* GET recommended page */
+router.get('/recommended', (req, res, next) => {
 
+  // logic for recommended page 
 
-  Recipe.find()
+  let difficulty;
+
+  if(req.user.experience === 'Amateur'){
+    difficulty = 'Easy';
+  }
+  if(req.user.experience === 'Professional'){
+    difficulty = 'Hard'
+  }
+
+// passing a difficulty object here will only find the recipes with that difficulty key:value 
+  Recipe.find({difficulty:difficulty})
     .then((recommendedRecipes) => {
 
       res.render('recipes/recommended', {

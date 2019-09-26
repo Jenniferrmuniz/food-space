@@ -5,12 +5,14 @@
 // purple #864BFF
 // watermelon pink #FF0D7B
 
-@import url('https://fonts.googleapis.com/css?family=Lato:300,400&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Amatic+SC|Dancing+Script|Josefin+Sans&display=swap');
+
+// font-family: 'Amatic SC', cursive;
+// font-family: 'Josefin Sans', sans-serif;
 
 body {
   padding-top: 70px;
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
-
 }
 
 a {
@@ -21,19 +23,17 @@ a {
   background-color: rgba($color: #000000, $alpha: .7)
 }
 
-.spoon {
-  color: white;
-}
 
 .home {
   // border: 1px solid red;
   text-align: center;
   margin: 250px auto;
-  font-family: 'Lato', sans-serif;
+  font-family: 'Dancing Script', cursive;
+  // font-weight: bold;
 }
 
 .home h1 {
-  font-size: 72px;
+  font-size: 104px;
   color: rgba($color: #000000, $alpha: .7);
 }
 
@@ -58,11 +58,14 @@ a {
   z-index: -5;
 }
 
-.all-recipes-page h2 {
+.recipes-wrapper h2 {
   text-align: center;
+  font-family: 'Amatic SC', cursive;
+  font-size: 72px;
 }
 
-.all-recipes {
+
+.recipes-list {
   // border: 1px solid red;
   display: flex;
   justify-content: space-around;
@@ -78,51 +81,73 @@ a {
   flex-direction: column;
   justify-content: space-evenly;
   align-items: center;
-  background-color: rgba($color: #6b4fa0, $alpha: .85);
-  margin: 8px;
+  background-color: rgba($color: rgb(251, 90, 117), $alpha: .7);
+  margin: 16px;
   border-radius: 16px;
   text-align: center;
   color: white;
+  // font-family: 'Josefin Sans', sans-serif;
   // background-color: 
+}
+
+.recipe-card h4 {
+  // font: 32px 'Amatic SC', cursive;
+  font: 24px 'Josefin Sans', sans-serif;
 }
 
 .recipe-card img {
   width: 80%;
   border-radius: 8px;
   border: 1px solid white;
+  box-shadow: 3px 0px 9px 0px rgba($color: #000000, $alpha: .3);
 }
 
-.all-recipes a {
+.recipes-list a {
   color: black;
 }
 
-.all-recipes a:hover {
+.recipes-list a:hover {
   text-decoration: none;
   transform: scale(1.05);
   color: black;
+  transition: .5s ease;
 }
 
 
 .details-wrapper {
   margin: 16px;
   display: flex;
-  // flex-wrap: wrap;
   justify-content: space-around;
   align-items: center;
   padding: 24px;
   border-radius: 8px;
-  // background-color: rgba($color: #FF0080, $alpha: 1);
-  // background-color: rgba($color: rgb(255, 98, 169), $alpha: .8);
-  background-color: rgba($color: rgb(99, 195, 219), $alpha: .9);
+  background-color: rgba($color: rgb(251, 90, 117), $alpha: .85);
+  // background-color: rgba($color: rgb(99, 195, 219), $alpha: .9);
   color: white;
 }
 
 .details-wrapper img {
   border-radius: 8px;
+  border: 1px solid white;
+  box-shadow: 3px 0px 9px 0px rgba($color: #000000, $alpha: .3);
 }
 
 .details-wrapper div {
   margin: 8px;
+}
+
+.details-text a {
+  color: white;
+}
+
+.details-text h1 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 48px;
+  margin-bottom: 20px;
+}
+
+.details-text h6, p, li {
+  font-family: 'Josefin Sans', sans-serif;
 }
 
 .comment-box {
@@ -140,4 +165,101 @@ a {
 
 .comment-user {
   color: rgb(0, 247, 255);
+}
+
+#signup-form {
+  margin: 30px auto;
+  width: 380px;
+}
+
+#signup-form label {
+  color: #666;
+  display: inline-block;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+}
+
+#signup-form input,
+#signup-form button {
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: 0;
+  padding: 4px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#signup-form button {
+  background: #43a3e6;
+  border: 1px solid #43a3e6;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .3s ease background;
+  width: 100%;
+}
+
+#signup-form button:hover {
+  background: #fff;
+  color: #43a3e6;
+  transition: .3s ease background;
+}
+
+
+
+#login-form {
+  margin: 175px auto;
+  width: 380px;
+}
+
+#login-form label {
+  // color: #666;
+  display: inline-block;
+  margin-bottom: 10px;
+  text-align: center;
+  width: 100%;
+  color: rgba($color: #000000, $alpha: .7);
+}
+
+#login-form input,
+#login-form button {
+  box-sizing: border-box;
+  font-size: 14px;
+  outline: 0;
+  padding: 4px;
+  width: 100%;
+  margin-bottom: 20px;
+}
+
+#login-form button {
+  background: #43a3e6;
+  border: 1px solid #43a3e6;
+  border-radius: 4px;
+  color: #fff;
+  cursor: pointer;
+  display: inline-block;
+  font-size: 14px;
+  padding: 8px 16px;
+  text-decoration: none;
+  text-transform: uppercase;
+  transition: .3s ease background;
+  width: 100%;
+}
+
+#login-form button:hover {
+  background: #fff;
+  color: #43a3e6;
+  transition: .3s ease background;
+}
+
+.welcome h1 {
+  font-size: 96px;
+  font-family: 'Dancing Script', cursive;
+  text-align: center;
 }

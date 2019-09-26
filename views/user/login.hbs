@@ -1,10 +1,13 @@
-<div class='welcome'>
-  <h1>FoodSpace</h1>
-  <p>Who's hungry?!</p>
-</div>
-
-
 <form action="/user/login" method="POST" id="login-form">
+  
+    <img class='background'
+    src="https://images.unsplash.com/photo-1505935428862-770b6f24f629?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1647&q=80"
+    alt="food image">
+
+  <div class='welcome'>
+    <h1>FoodSpace</h1>
+  </div>
+
   <h2>Login</h2>
 
   <label for="username">Username</label>
@@ -20,7 +23,7 @@
 
   <button type='submit'>Login</button>
 
-{{!-- google login if we want to add later --}}
+  {{!-- google login if we want to add later --}}
 
   {{!-- {{#unless user}}
   <div>
