@@ -10,6 +10,29 @@ const unirest = require('unirest');
 const magicUploadTool = require('../config/cloudinary-settings');
 
 
+
+
+router.post('/deletestep/:recipeid/step/:index', (req, res, next) =>{
+  Recipe.findById(req.params.recipeid)
+  .then((recipe) => {
+
+    let step = recipe.instructions[req.params.index];
+
+    Recipe.findByIdAndUpdate(req.params.recipeid, {$pull: {instructions: step}})
+    .then((result) => {
+      res.json(result);
+    })
+    .catch((err) => {
+      next(err);
+    })
+
+  })
+  .catch((err)=>{
+    next(err);
+  })
+})
+
+
 // router.get('/randomRecipe', (req, res, next) => {
 
 //   var req = unirest("GET", "https://spoonacular-recipe-food-nutrition-v1.p.rapidapi.com/recipes/random");
@@ -119,25 +142,26 @@ router.get('/new', (req, res, next) => {
 
 router.post('/new', magicUploadTool.single('the-image-input-name'), (req, res, next) => {
 
-  console.log("><>><<><><><><><><>>><>< ", req.body);
+  if(!req.user){
+    res.reditect('/user/login')
+  }
+
+
   let newRecipe = {
     title: req.body.theTitle,
     duration: req.body.theDuration,
-    //author: req.user._id,
+    author: req.user._id,
     instructions: req.body.instructionInput,
-    //difficulty: req.body.difficulty
+    difficulty: req.body.theDifficulty
   }
-
-  console.log('=-=-=-', req.file)
 
   if(req.file){
     newRecipe.image = req.file.url;
   }
+
   
-  console.log("give me the new recipe >>>>>>>>>>>>>>>>>>>>>>>>>> ", newRecipe);
     Recipe.create(newRecipe)
     .then((result) => {
-      console.log("this is the results ()()()()()()()()()())()()() ", result);
       res.redirect('/recipes/all')
     })
     .catch((err) => {
@@ -177,13 +201,27 @@ router.get('/details/:id', (req, res, next) => {
 
   Recipe.findById(id).populate('author')
     .then((theRecipe) => {
-      console.log(theRecipe)
+      
 
-      Comment.find({
-          recipe: id
-        }).populate('author')
+      Comment.find({recipe: id}).populate('author')
         .then((allComments) => {
-          // console.log(theRecipe)
+          
+          if(req.user){
+
+
+            if(theRecipe.author){
+
+              if(theRecipe.author.equals(req.user._id)){
+                theRecipe.mine = true;
+            }
+
+            }
+
+
+
+        }
+
+
           res.render('recipes/recipeDetails', {
             recipe: theRecipe,
             comments: allComments
@@ -231,6 +269,21 @@ router.get('/update/:id', (req, res, next) => {
       User.find()
         .then((allUsers) => {
 
+          //theRecipe.steps = theRecipe.instructions.length;
+
+          
+          if(theRecipe.difficulty === 'Easy'){
+            theRecipe.easy = true;
+          } 
+       
+          else{
+            theRecipe.easy = false;
+          }
+
+
+          //let numOfSteps = theRecipe.instructions.length;
+
+
           // Find the author of the recipe
           allUsers.forEach((eachUser) => {
             if (eachUser._id.equals(theRecipe.author)) {
@@ -258,7 +311,7 @@ router.get('/update/:id', (req, res, next) => {
 
 
 // POST: update the recipe using the info from update page
-router.post('/update/:id', (req, res, next) => {
+router.post('/update/:id', magicUploadTool.single('the-image-input-name'), (req, res, next) => {
   let id = req.params.id;
 
   let updateRecipe = {
@@ -266,6 +319,10 @@ router.post('/update/:id', (req, res, next) => {
     description: req.body.theDescription,
     image: req.body.theImage,
     duration: req.body.theDuration
+  }
+
+  if(req.file){
+    updateRecipe.image = req.file.url;
   }
 
   Recipe.findByIdAndUpdate(id, updateRecipe)
@@ -277,6 +334,10 @@ router.post('/update/:id', (req, res, next) => {
     })
 
 })
+
+
+
+
 
 
 

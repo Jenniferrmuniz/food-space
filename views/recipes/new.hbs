@@ -16,6 +16,15 @@
             </div>
 
             <div>
+                <label for='difficultyInput'>Difficulty</label>
+                <select id='difficultyInput' name='theDifficulty'>
+                    <option value='unspecfied' selected disabled> -- Please select difficulty level -- </option>
+                    <option value='Easy'>Easy</option>
+                    <option value='Hard'>Hard</option>
+                </select>
+                
+            </div>
+            <div>
                 <label for="theInstructions">Instructions</label>
                 <div id="cookingSteps">
                     <p class="cookingStepsInput"> Step 1: <input name='instructionInput' id='theInstructions' type='text'></p>
@@ -36,10 +45,8 @@
         <div>
             <p>Image:</p>
             <input type="file" name="the-image-input-name">
-            {{!-- <input type="text" name='theImage'> --}}
         </div>
 
-        <input type='hidden' name='theAuthor' value='{{theUser._id}}'>
 
 
         <div>

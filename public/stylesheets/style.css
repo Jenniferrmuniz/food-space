@@ -197,6 +197,7 @@ a {
   font-family: 'Dancing Script', cursive;
   text-align: center; }
 
+<<<<<<< HEAD
 .upload-section {
   display: flex;
   flex-wrap: wrap; }
@@ -206,5 +207,9 @@ a {
   border: 1px solid red;
   display: flex;
   justify-content: space-around; }
+=======
+.details-image img {
+  width: 400px; }
+>>>>>>> 4e78fd01d4cf1755381d7daafc128d74ceb5016c
 
 /*# sourceMappingURL=style.css.map */

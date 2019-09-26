@@ -42,6 +42,8 @@ router.post('/signup', magicUploadTool.single('the-image-input-name'), (req, res
   }
 
 
+
+
   // if(req.body['the-image-input-name']){
   //   newUser.profileImage = req.body['the-image-input-name'];
   // }
