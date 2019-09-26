@@ -271,9 +271,15 @@ router.get('/update/:id', (req, res, next) => {
 
           //theRecipe.steps = theRecipe.instructions.length;
 
-          if(theRecipe.difficulty='Easy'){
+          
+          if(theRecipe.difficulty === 'Easy'){
             theRecipe.easy = true;
+          } 
+       
+          else{
+            theRecipe.easy = false;
           }
+
 
           //let numOfSteps = theRecipe.instructions.length;
 
@@ -305,7 +311,7 @@ router.get('/update/:id', (req, res, next) => {
 
 
 // POST: update the recipe using the info from update page
-router.post('/update/:id', (req, res, next) => {
+router.post('/update/:id', magicUploadTool.single('the-image-input-name'), (req, res, next) => {
   let id = req.params.id;
 
   let updateRecipe = {
@@ -313,6 +319,10 @@ router.post('/update/:id', (req, res, next) => {
     description: req.body.theDescription,
     image: req.body.theImage,
     duration: req.body.theDuration
+  }
+
+  if(req.file){
+    updateRecipe.image = req.file.url;
   }
 
   Recipe.findByIdAndUpdate(id, updateRecipe)

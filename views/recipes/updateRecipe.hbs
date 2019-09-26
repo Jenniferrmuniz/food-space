@@ -12,16 +12,18 @@
 
 
         <div>
-            <label for='difficultyInput'>Edit Difficulty:</label>
+            <label for='difficultyInput'>
+                <p>{{recipe.difficulty}}</p>Edit Difficulty:
+            </label>
             <select id='difficultyInput' name='theDifficulty'>
                 <option value='unspecfied'> -- Please select difficulty level -- </option>
-                
+
                 {{#if recipe.easy}}
-                <option value='Easy' selected>Easy</option>
+                <option selected value='Easy'>Easy</option>
                 <option value='Hard'>Hard</option>
                 {{else}}
                 <option value='Easy'>Easy</option>
-                <option value='Hard' selected>Hard</option>
+                <option selected value='Hard'>Hard</option>
                 {{/if}}
             </select>
         </div>
@@ -34,11 +36,11 @@
             {{#each recipe.instructions}}
             <div id="cookingSteps">
                 <p>
-                <span class="cookingStepsInput"> </span>
-                <input  value='{{this}}'name='instructionInput' id='theInstructions' type='text'>
+                    <span class="cookingStepsInput"> </span>
+                    <input value='{{this}}' name='instructionInput' id='theInstructions' type='text'>
                 </p>
 
-            <button type="button" class='deleteBtn'>Delete this step</button>
+                <button type="button" class='deleteBtn'>Delete this step</button>
             </div>
             {{/each}}
 
@@ -48,9 +50,15 @@
 
 
 
+
+        <div>
+            <p> Edit Image:</p>
+            <input type="file" name="the-image-input-name">
+        </div>
+
         {{!-- file upload added here --}}
-        <p>Edit Image</p>
-        <input type="text" name='theImage' value='{{recipe.image}}'>
+        {{!-- <p>Edit Image</p>
+        <input type="text" name='theImage' value='{{recipe.image}}'> --}}
     </div>
 
     <button type='submit'> Save </button>
