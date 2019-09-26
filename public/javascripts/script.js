@@ -1,3 +1,5 @@
+import axios from "axios";
+
 // import { log } from "util";
 
 document.addEventListener('DOMContentLoaded', () => {
@@ -8,7 +10,7 @@ document.addEventListener('DOMContentLoaded', () => {
 }, false);
 
 
-console.log("adding step >>>>>. ", document.querySelector('#addStepButton'));
+
 
 
 document.querySelector("#addStepButton").onclick = function(){
@@ -31,3 +33,22 @@ document.querySelector("#addStepButton").onclick = function(){
 };    
 
 
+
+
+
+// let btns = document.querySelectorAll(".deleteBtn")
+// let id = document.getElementById('recipe-id').innerHTML
+// for(let i=0; i<btns.length; i++ ){
+
+//   btns[i].onclick = function(){
+//     axios.post(`http://localhost:3000/recipes/${id}/step/${i}`)
+//     .then(()=>{
+//       console.log('yay')
+//     })
+//     .catch((err)=>{
+//       console.log(err);
+//     })
+//   }
+
+
+// }

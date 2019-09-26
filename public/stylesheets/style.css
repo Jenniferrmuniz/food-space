@@ -85,6 +85,9 @@ a {
 .details-wrapper div {
   margin: 8px; }
 
+.details-image img {
+  width: 400px; }
+
 .comment-box {
   margin: auto 350px; }
 

@@ -108,25 +108,26 @@ router.get('/new', (req, res, next) => {
 
 router.post('/new', magicUploadTool.single('the-image-input-name'), (req, res, next) => {
 
-  console.log("><>><<><><><><><><>>><>< ", req.body);
+  if(!req.user){
+    res.reditect('/user/login')
+  }
+
+
   let newRecipe = {
     title: req.body.theTitle,
     duration: req.body.theDuration,
-    //author: req.user._id,
+    author: req.user._id,
     instructions: req.body.instructionInput,
-    //difficulty: req.body.difficulty
+    difficulty: req.body.theDifficulty
   }
-
-  console.log('=-=-=-', req.file)
 
   if(req.file){
     newRecipe.image = req.file.url;
   }
+
   
-  console.log("give me the new recipe >>>>>>>>>>>>>>>>>>>>>>>>>> ", newRecipe);
     Recipe.create(newRecipe)
     .then((result) => {
-      console.log("this is the results ()()()()()()()()()())()()() ", result);
       res.redirect('/recipes/all')
     })
     .catch((err) => {
@@ -166,13 +167,19 @@ router.get('/details/:id', (req, res, next) => {
 
   Recipe.findById(id).populate('author')
     .then((theRecipe) => {
-      console.log(theRecipe)
+      
 
-      Comment.find({
-          recipe: id
-        }).populate('author')
+      Comment.find({recipe: id}).populate('author')
         .then((allComments) => {
-          // console.log(theRecipe)
+          
+          if(req.user){
+   
+            if(theRecipe.author.equals(req.user._id)){
+                theRecipe.mine = true;
+            }
+        }
+
+
           res.render('recipes/recipeDetails', {
             recipe: theRecipe,
             comments: allComments
@@ -219,6 +226,15 @@ router.get('/update/:id', (req, res, next) => {
 
       User.find()
         .then((allUsers) => {
+
+          //theRecipe.steps = theRecipe.instructions.length;
+
+          if(theRecipe.difficulty='Easy'){
+            theRecipe.easy = true;
+          }
+
+          //let numOfSteps = theRecipe.instructions.length;
+
 
           // Find the author of the recipe
           allUsers.forEach((eachUser) => {
@@ -267,6 +283,18 @@ router.post('/update/:id', (req, res, next) => {
 
 })
 
+
+
+
+// router.post('/:recipe-id/step/:index', (req, res, next) =>{
+//   Recipe.findById(req.params.recipe-id)
+//   .then((recipe) => {
+//     recipe.instructions = recipe.instructions.splice(req.params.index, 1)
+//   })
+//   .catch((err)=>{
+//     next(err);
+//   })
+// })
 
 
 

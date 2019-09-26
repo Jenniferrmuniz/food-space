@@ -43,6 +43,27 @@
         <img src="{{recipe.image}}" alt="food image">
     </div>
 
+
+
+{{#if recipe.mine}}
+
+<form action="/recipes/delete/{{recipe._id}}" method="POST">
+    <button>Delete This Recipe</button>
+</form>
+
+
+<a href="/recipes/update/{{recipe._id}}">Edit This Recipe's Info</a>
+
+{{/if}}
+
+
+
+
+
+
+
+
+
 </div>
 
 
