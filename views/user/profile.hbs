@@ -1,35 +1,42 @@
 <div class='profile-wrapper'>
 
-    <div class="card" style="width: 24rem;">
+    <div class="profile-card">
 
         {{#if theUser.profileOwner}}
+            <div class='image-div'>
+                <h3>Your Profile</h3>
+                {{#if theUser.profileImage}}
 
-        <h3>Welcome {{theUser.username}}</h3>
-        <img src="{{theUser.profileImage}}" class="card-img-top" alt="profile picture">
+                    <img src="{{theUser.profileImage}}" class="" alt="profile picture">
+                {{else}}
+                    <img src="/images/person-icon-6.png" class="" alt="profile picture">
+                {{/if}}
 
-        <form action="/user/{{theUser._id}}" method="POST" enctype='multipart/form-data'>
-            <input type="file" name="the-image-input-name">
-            <button>Upload</button>
-        </form>
+                <form action="/user/{{theUser._id}}" method="POST" enctype='multipart/form-data'>
+                    <input type="file" name="the-image-input-name">
+                    <button>Upload</button>
+                </form>
+            </div>
+            
 
-        <div class="card-body">
-            <h5 class="card-title">{{profileInfo.username}}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="/recipes/recommended" class="btn btn-primary">See your recommended recipes</a>
-        </div>
+            <div class="profile-info">
+                <h5>Experience level: {{profileInfo.experience}}</h5>
+                <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+                <a href="/recipes/recommended" class="">See your recommended recipes</a>
+            </div>
 
         {{else}}
 
-        <h3>{{profileInfo.username}}'s Profile</h3>
-        <img src="{{theUser.profileImage}}" class="card-img-top" alt="profile picture">
+            <div class='image-div'>
+            <h3>{{profileInfo.username}}'s Profile</h3>
+                 <img src="{{theUser.profileImage}}" class="" alt="profile picture">
+            </div>
+           
 
-        <div class="card-body">
-            <h5 class="card-title">{{profileInfo.username}}</h5>
-            <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's
-                content.</p>
-            <a href="/recipes/recommended" class="btn btn-primary">See your recommended recipes</a>
-        </div>
+            <div class="profile-info">
+                <h5 class="">{{profileInfo.username}}</h5>
+                <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
+            </div>
 
         {{/if}}
 

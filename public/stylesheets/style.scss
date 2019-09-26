@@ -271,8 +271,45 @@ a {
   margin: auto;
   border: 1px solid red;
   display: flex;
+  justify-content: space-between;
+  flex-direction: column;
+  height: 100vh;
+}
+
+
+.profile-card{
+  display:flex;
+  flex-direction: row;
+  justify-content: space-around;
+  border: 1px solid green;
+  height: 350px;
+  margin-top: 20px;
+  width: 100vw;
+}
+
+.image-div{
+  display:flex;
+  flex-direction: column;
   justify-content: space-around;
 }
+
+.image-div form{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
+.image-div img{
+  width: 200px;
+}
+
+
+.profile-info{
+  display:flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+
 
 .details-image img{
   width: 400px;
