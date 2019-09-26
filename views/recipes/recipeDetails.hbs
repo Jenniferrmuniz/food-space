@@ -16,16 +16,22 @@
             <div>
                 <h3> {{recipe.title}}</h3>
 
+
                 <h6>Total Cook Time</h6>
                 <p>{{recipe.duration}} minutes</p>
 
                 <h6>Difficulty</h6>
                 <p>{{recipe.difficulty}}</p>
 
+
                 <h6>Instructions</h6>
                 <ol>
                     {{#each recipe.instructions}}
+                    {{#if this.step}}
                     <li>{{this.step}}</li>
+                    {{else}}
+                    <li>{{this}}</li>
+                    {{/if}}
                     {{/each}}
                 </ol>
 
