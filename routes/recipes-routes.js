@@ -112,12 +112,15 @@ router.get('/recommended', (req, res, next) => {
 
   let difficulty;
 
-  if(req.user.experience === 'Amateur'){
-    difficulty = 'Easy';
+  if(req.user){
+    if(req.user.experience === 'Amateur'){
+      difficulty = 'Easy';
+    }
+    if(req.user.experience === 'Professional'){
+      difficulty = 'Hard'
+    }
   }
-  if(req.user.experience === 'Professional'){
-    difficulty = 'Hard'
-  }
+
 
 // passing a difficulty object here will only find the recipes with that difficulty key:value 
   Recipe.find({difficulty:difficulty})
