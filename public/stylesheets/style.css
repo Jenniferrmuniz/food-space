@@ -60,6 +60,7 @@ a {
 
 .recipe-card img {
   width: 80%;
+  height: 160px;
   border-radius: 8px;
   border: 1px solid white;
   box-shadow: 3px 0px 9px 0px rgba(0, 0, 0, 0.3); }
@@ -205,7 +206,7 @@ a {
   margin: auto;
   border: 1px solid red;
   display: flex;
-  justify-content: space-between;
+  justify-content: space-around;
   flex-direction: column;
   height: 100vh; }
 
@@ -237,6 +238,7 @@ a {
   justify-content: space-around; }
 
 .details-image img {
-  width: 400px; }
+  width: 400px;
+  height: 266px; }
 
 /*# sourceMappingURL=style.css.map */
