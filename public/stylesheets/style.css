@@ -308,6 +308,34 @@ a {
   background-color: white;
   border-radius: 8px; }
 
+<<<<<<< HEAD
+.update-wrapper {
+  background-color: rgba(251, 90, 117, 0.7);
+  margin: 20px;
+  display: flex; }
+
+.update-wrapper h1 {
+  margin: 10px; }
+
+.update-recipe {
+  display: flex;
+  flex-direction: column;
+  padding: 15px; }
+
+.update-recipe-info {
+  display: flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center; }
+
+.update-recipe-info div {
+  margin: 30px 80px; }
+
+.submit-button {
+  margin-left: 800px; }
+=======
 .new-wrapper {
   height: 100vh;
   display: flex;
@@ -325,5 +353,6 @@ a {
   display: flex;
   flex-direction: column;
   justify-content: space-around; }
+>>>>>>> e92fdc9d7f58757a6ac6ea10630e4bd7c4ca359b
 
 /*# sourceMappingURL=style.css.map */

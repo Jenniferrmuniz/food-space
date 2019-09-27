@@ -402,6 +402,41 @@ a {
   border-radius: 8px;
 }
 
+
+
+.update-wrapper{
+  background-color: rgba($color: rgb(251, 90, 117), $alpha: .7);
+  margin: 20px;
+  display:flex;
+}
+
+.update-wrapper h1{
+  margin: 10px;
+}
+
+
+.update-recipe{
+  display:flex;
+  flex-direction: column;
+  padding: 15px;
+}
+
+.update-recipe-info{
+  display:flex;
+  flex-direction: row;
+  flex-wrap: wrap;
+  justify-content: space-around;
+  align-items: center;
+  align-content: center;
+}
+
+.update-recipe-info div{
+  margin: 30px 80px;
+}
+
+.submit-button{
+  margin-left: 800px;
+}
 .new-wrapper {
   // border: 1px solid red;
   height: 100vh;
