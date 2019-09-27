@@ -3,40 +3,42 @@
     <div class="profile-card">
 
         {{#if theUser.profileOwner}}
-            <div class='image-div'>
-                <h3>Your Profile</h3>
-                {{#if theUser.profileImage}}
+        <div class='image-div'>
+            <h3>Your Profile</h3>
+            {{#if theUser.profileImage}}
 
-                    <img src="{{theUser.profileImage}}" class="" alt="profile picture">
-                {{else}}
-                    <img src="/images/person-icon-6.png" class="" alt="profile picture">
-                {{/if}}
+            <img src="{{theUser.profileImage}}" class="profile-img" alt="profile picture">
+            {{else}}
+            <img src="/images/person-icon-6.png" class="profile-img" alt="profile picture">
+            {{/if}}
 
-                <form action="/user/{{theUser._id}}" method="POST" enctype='multipart/form-data'>
-                    <input type="file" name="the-image-input-name">
-                    <button>Upload</button>
-                </form>
-            </div>
-            
+            <form action="/user/{{theUser._id}}" method="POST" enctype='multipart/form-data'>
+                <input type="file" name="the-image-input-name">
+                <button>Upload</button>
+            </form>
+        </div>
 
-            <div class="profile-info">
-                <h5>Experience level: {{profileInfo.experience}}</h5>
-                <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-                <a href="/recipes/recommended" class="">See your recommended recipes</a>
-            </div>
+
+        <div class="profile-info">
+            <h5>Experience level: {{profileInfo.experience}}</h5>
+            <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.
+            </p>
+            <a href="/recipes/recommended" class="">See your recommended recipes</a>
+        </div>
 
         {{else}}
 
-            <div class='image-div'>
+        <div class='image-div'>
             <h3>{{profileInfo.username}}'s Profile</h3>
-                 <img src="{{theUser.profileImage}}" class="" alt="profile picture">
-            </div>
-           
+            <img src="{{profileInfo.profileImage}}" class="profile-img" alt="profile picture">
+        </div>
 
-            <div class="profile-info">
-                <h5 class="">{{profileInfo.username}}</h5>
-                <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-            </div>
+
+        <div class="profile-info">
+            <h5 class="">Experience level: {{profileInfo.experience}}</h5>
+            <p class="">Some quick example text to build on the card title and make up the bulk of the card's content.
+            </p>
+        </div>
 
         {{/if}}
 
@@ -45,13 +47,21 @@
     </div>
 
     {{!-- User's created Recipes  --}}
-    <div>
-        <p> My recipes </p>
+    <div class='profile-body'>
+        <p>Recipes Created: </p>
+        <div class='profile-recipes-list'>
             {{#each allRecipes}}
             {{#if this.recipeChosen}}
-                <a href="/recipes/details/{{this._id}}">{{this.title}}</a>
+            <a href="/recipes/details/{{this._id}}">
+            <div class='profile-recipe-card'>
+                <h4> {{this.title}} </h4>
+                <img src="{{this.image}}" alt="food image">
+            </div>
+            </a>
             {{/if}}
             {{/each}}
+        </div>
+
     </div>
 
 </div>

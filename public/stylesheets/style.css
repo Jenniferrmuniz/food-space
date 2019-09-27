@@ -203,26 +203,25 @@ a {
   flex-wrap: wrap; }
 
 .profile-wrapper {
-  margin: auto;
-  border: 1px solid red;
+  margin-top: 18px;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
-  height: 100vh; }
+  height: 90%; }
 
 .profile-card {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  border: 1px solid green;
-  height: 350px;
+  height: 300px;
   margin-top: 20px;
-  width: 100vw; }
+  width: 100%; }
 
 .image-div {
   display: flex;
   flex-direction: column;
-  justify-content: space-around; }
+  justify-content: space-around;
+  margin: 70px; }
 
 .image-div form {
   display: flex;
@@ -230,12 +229,71 @@ a {
   justify-content: space-around; }
 
 .image-div img {
-  width: 200px; }
+  background-color: rgba(217, 217, 217, 0.5);
+  padding: 30px;
+  height: 250px;
+  -moz-border-radius: 120px;
+  -webkit-border-radius: 120px;
+  width: 250px;
+  margin: 10px; }
 
 .profile-info {
   display: flex;
   flex-direction: column;
   justify-content: space-around; }
+
+.profile-info a {
+  color: rgba(251, 90, 117, 0.7); }
+
+.profile-info a:hover {
+  color: rgba(251, 90, 117, 0.7); }
+
+.profile-recipes-list {
+  display: flex;
+  justify-content: space-around;
+  align-items: center;
+  flex-wrap: wrap; }
+
+.profile-body {
+  padding: 10px 200px;
+  background-color: rgba(217, 217, 217, 0.5);
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+  align-items: center;
+  margin: 45px 10px 10px 10px; }
+
+.profile-recipe-card {
+  width: 200px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-evenly;
+  align-items: center;
+  background-color: rgba(251, 90, 117, 0.7);
+  margin: 16px;
+  border-radius: 16px;
+  text-align: center;
+  color: white; }
+
+.profile-recipe-card h4 {
+  font: 24px 'Josefin Sans', sans-serif; }
+
+.profile-recipe-card img {
+  width: 75%;
+  height: 80px;
+  border-radius: 8px;
+  border: 1px solid white;
+  box-shadow: 3px 0px 9px 0px rgba(0, 0, 0, 0.3); }
+
+.profile-recipes-list a {
+  color: black; }
+
+.profile-recipes-list a:hover {
+  text-decoration: none;
+  transform: scale(1.05);
+  color: black;
+  transition: .5s ease; }
 
 .details-image img {
   width: 400px;
