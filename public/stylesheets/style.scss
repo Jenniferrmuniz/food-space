@@ -161,7 +161,7 @@ a {
   // border: 1px solid red;
   background-color: rgba($color: rgb(72, 74, 75), $alpha: .6);
   color: white;
-  padding: 5px;
+  padding: 15px;
 }
 
 .comment-user {
@@ -394,4 +394,10 @@ a {
 .details-image img{
   width: 400px;
   height: 266px;
+}
+
+.delete-form input {
+  color: red;
+  background-color: white;
+  border-radius: 8px;
 }

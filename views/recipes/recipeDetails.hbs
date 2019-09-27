@@ -9,7 +9,21 @@
     <div class='details-text'>
 
         {{!-- page back button  --}}
-        <a href="#" onclick="goBack()"> Back </a>
+        <div class='details-actions'>
+            <a href="#" onclick="goBack()"> Back </a>
+            <br>
+
+            {{#if recipe.mine}}
+
+            <a href="/recipes/update/{{recipe._id}}">Edit Recipe</a>
+
+            <form class='delete-form' action="/recipes/delete/{{recipe._id}}" method="POST">
+                <input type="submit" value="Delete Recipe">
+            </form>
+
+            {{/if}}
+        </div>
+
 
 
         <div class='details-card'>
@@ -50,16 +64,6 @@
         <img src="{{recipe.image}}" alt="food image">
     </div>
 
-    {{#if recipe.mine}}
-
-    <form action="/recipes/delete/{{recipe._id}}" method="POST">
-        <button>Delete This Recipe</button>
-    </form>
-
-    <a href="/recipes/update/{{recipe._id}}">Edit This Recipe's Info</a>
-
-    {{/if}}
-
 </div>
 
 
@@ -69,20 +73,20 @@
 </div> --}}
 
 {{#if theUser}}
-    <div class='comment-box'>
-        <form action='/comments/recipe/{{recipe._id}}' method='POST'>
-            <textarea class="form-control" rows="5" id="comment" name='theComment'></textarea>
-            {{!-- <input type='text' name='theComment'> --}}
-            <input type='hidden' name='theAuthor' value='{{theUser._id}}'>
-            <input type='hidden' name='theRecipe' value='{{recipe._id}}'>
-            <button type='submit'>Submit comment</button>
-        </form>
+<div class='comment-box'>
+    <form action='/comments/recipe/{{recipe._id}}' method='POST'>
+        <textarea class="form-control" rows="5" id="comment" name='theComment'></textarea>
+        {{!-- <input type='text' name='theComment'> --}}
+        <input type='hidden' name='theAuthor' value='{{theUser._id}}'>
+        <input type='hidden' name='theRecipe' value='{{recipe._id}}'>
+        <button type='submit'>Submit comment</button>
+    </form>
 
-        <div class='comments'>
-            {{#each comments}}
-            {{!-- <p>{{this.comment}}</p> --}}
-            <p> <a class='comment-user' href='/user/{{this.author._id}}'>{{this.author.username}} </a> {{this.comment}} </p>
-            {{/each}}
-        </div>
+    <div class='comments'>
+        {{#each comments}}
+        {{!-- <p>{{this.comment}}</p> --}}
+        <p> <a class='comment-user' href='/user/{{this.author._id}}'>{{this.author.username}} </a> {{this.comment}} </p>
+        {{/each}}
     </div>
+</div>
 {{/if}}
