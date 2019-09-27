@@ -37,6 +37,11 @@ a {
   font-family: 'Amatic SC', cursive;
   font-size: 72px; }
 
+.recipes-wrapper h6 {
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+  font-size: 32px; }
+
 .recipes-list {
   display: flex;
   justify-content: space-around;
@@ -230,11 +235,9 @@ a {
   justify-content: space-around; }
 
 .image-div img {
-  background-color: rgba(217, 217, 217, 0.5);
-  padding: 30px;
   height: 250px;
-  -moz-border-radius: 120px;
-  -webkit-border-radius: 120px;
+  border-radius: 120px;
+  border: 10px solid #d9d9d9;
   width: 250px;
   margin: 10px; }
 

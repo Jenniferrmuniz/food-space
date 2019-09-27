@@ -23,8 +23,7 @@ document.querySelector("#addStepButton").onclick = function(){
   let thePtag = document.createElement(`p`);
   thePtag.setAttribute('class', `cookingStepsInput`)
   thePtag.innerHTML = `
-  Step ${document.getElementsByClassName("cookingStepsInput").length + 1}:
-  `;
+  Step ${document.getElementsByClassName("cookingStepsInput").length + 1}:`;
 
   let theInputTag = document.createElement(`input`);
   theInputTag.setAttribute('id', `theInstructions`);
