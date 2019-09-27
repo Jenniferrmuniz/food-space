@@ -111,7 +111,7 @@ a {
   border-radius: 8px;
   background-color: rgba(72, 74, 75, 0.6);
   color: white;
-  padding: 5px; }
+  padding: 15px; }
 
 .comment-user {
   color: #00f7ff; }
@@ -204,7 +204,6 @@ a {
 
 .profile-wrapper {
   margin: auto;
-  border: 1px solid red;
   display: flex;
   justify-content: space-around;
   flex-direction: column;
@@ -214,7 +213,7 @@ a {
   display: flex;
   flex-direction: row;
   justify-content: space-around;
-  border: 1px solid green;
+  border: 1px solid black;
   height: 350px;
   margin-top: 20px;
   width: 100vw; }
@@ -240,5 +239,10 @@ a {
 .details-image img {
   width: 400px;
   height: 266px; }
+
+.delete-form input {
+  color: red;
+  background-color: white;
+  border-radius: 8px; }
 
 /*# sourceMappingURL=style.css.map */
