@@ -1,66 +1,78 @@
-<h1> Update Recipe </h1>
+<div class='update-wrapper'>
 
-<form action="/recipes/update/{{recipe._id}}" method='POST' enctype='multipart/form-data'>
+    <h1> Update Recipe </h1>
 
-    <div>
-        <label for="titleInput">Edit Title:</label>
-        <input id='titleInput' type="text" name='theTitle' value="{{recipe.title}}">
+    <form class='update-recipe-form'action="/recipes/update/{{recipe._id}}" method='POST' enctype='multipart/form-data'>
 
-
-        <label for="durationInput">Edit Duration:</label>
-        <input id='durationInput' type="text" name='theDuration' value="{{recipe.duration}}">
-
-
-        <div>
-            <label for='difficultyInput'>
-                <p>{{recipe.difficulty}}</p>Edit Difficulty:
-            </label>
-            <select id='difficultyInput' name='theDifficulty'>
-                <option value='unspecfied'> -- Please select difficulty level -- </option>
-
-                {{#if recipe.easy}}
-                <option selected value='Easy'>Easy</option>
-                <option value='Hard'>Hard</option>
-                {{else}}
-                <option value='Easy'>Easy</option>
-                <option selected value='Hard'>Hard</option>
-                {{/if}}
-            </select>
-        </div>
-
-        <p style='display:none' id='recipe-id'>{{recipe._id}}</p>
+        <div class='update-recipe'>
+            <div class='update-recipe-info'>
+                <div>
+                    <label for="titleInput">Edit Title:</label>
+                    <input id='titleInput' type="text" name='theTitle' value="{{recipe.title}}">
+                </div>
 
 
-        <div>
-            <label for="theInstructions">Edit Instructions</label>
-            {{#each recipe.instructions}}
-            <div id="cookingSteps">
-                <p>
-                    <span class="cookingStepsInput"> </span>
-                    <input value='{{this}}' name='instructionInput' id='theInstructions' type='text'>
-                </p>
+                <div>
+                    <label for='imageInput'> Edit Image:</label>
+                    <input id='imageInput' type="file" name="the-image-input-name">
+                </div>
+                <div>
+                    <label for="durationInput">Edit Duration:</label>
+                    <input id='durationInput' type="text" name='theDuration' value="{{recipe.duration}}">
+                </div>
 
-                <button type="button" class='deleteBtn'>Delete this step</button>
+
+                <div>
+                    <label for='difficultyInput'>Edit Difficulty:</label>
+                    <select id='difficultyInput' name='theDifficulty'>
+                        <option value='unspecfied'> -- Please select difficulty level -- </option>
+
+                        {{#if recipe.easy}}
+                        <option selected value='Easy'>Easy</option>
+                        <option value='Hard'>Hard</option>
+                        {{else}}
+                        <option value='Easy'>Easy</option>
+                        <option selected value='Hard'>Hard</option>
+                        {{/if}}
+                    </select>
+                </div>
             </div>
-            {{/each}}
 
-            <button id="addStepButton" type='button' name='add-step'>Add a step</button>
-
-        </div>
+            <p style='display:none' id='recipe-id'>{{recipe._id}}</p>
 
 
+            <div>
+                <label for="theInstructions">Edit Instructions</label>
+                {{#each recipe.instructions}}
+                <div id="cookingSteps">
+                    <p>
+                        <span class="cookingStepsInput"> </span>
+                        <input value='{{this}}' name='instructionInput' id='theInstructions' type='text'>
+                    <button type="button" class='deleteBtn'>Delete this step</button>
+                    </p>
+
+                </div>
+                {{/each}}
+
+                <button id="addStepButton" type='button' name='add-step'>Add a step</button>
+
+            </div>
 
 
-        <div>
-            <p> Edit Image:</p>
-            <input type="file" name="the-image-input-name">
-        </div>
 
-        {{!-- file upload added here --}}
-        {{!-- <p>Edit Image</p>
+
+
+
+            {{!-- file upload added here --}}
+            {{!-- <p>Edit Image</p>
         <input type="text" name='theImage' value='{{recipe.image}}'> --}}
-    </div>
+        </div>
 
-    <button type='submit'> Save </button>
+        <button class='submit-button'type='submit'> Save </button>
 
-</form>
+    </form>
+
+
+
+
+</div>
