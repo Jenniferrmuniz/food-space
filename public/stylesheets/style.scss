@@ -12,6 +12,7 @@
 
 body {
   padding-top: 70px;
+  background-color: rgba(217, 217, 217, .5);
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
@@ -62,6 +63,12 @@ a {
   text-align: center;
   font-family: 'Amatic SC', cursive;
   font-size: 72px;
+}
+
+.recipes-wrapper h6 {
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+  font-size: 32px;
 }
 
 
@@ -300,11 +307,13 @@ a {
 }
 
 .image-div img{
-  background-color: rgba(217, 217, 217, .5);
-  padding: 30px;
+  // background-color: rgba(217, 217, 217, .5);
+  // padding: 30px;
   height: 250px;
-  -moz-border-radius:120px;
-  -webkit-border-radius: 120px;
+  // -moz-border-radius: 120px;
+  // -webkit-border-radius: 120px;
+  border-radius: 120px;
+  border: 10px solid rgba(217, 217, 217, 7);
   width: 250px;
   margin: 10px;
 }
@@ -396,7 +405,7 @@ a {
   height: 266px;
 }
 
-.delete-form input {
+.form-button {
   color: red;
   background-color: white;
   border-radius: 8px;
@@ -437,3 +446,26 @@ a {
 .submit-button{
   margin-left: 800px;
 }
+.new-wrapper {
+  // border: 1px solid red;
+  height: 100vh;
+  display: flex;
+  justify-content: center;
+  // background-color: rgba(217, 217, 217, .5);
+}
+
+.add-new {
+  margin-top: 100px;
+  height: 60vh;
+  padding: 50px;
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color: rgba($color: rgb(251, 90, 117), $alpha: .85);
+}
+
+.add-new form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around;
+}
+

@@ -1,57 +1,62 @@
-<div class='add-new'>
-    <h2> Add a new recipe </h2>
+<div class='new-wrapper'>
+    <div class='add-new'>
 
-    <form action="/recipes/new" method="POST" enctype='multipart/form-data' >
+        <h2> Add a new recipe </h2>
 
-        <div>
-            <div>
-                <label for="titleInput">Title</label>
-                <input id="titleInput" type="text" name='theTitle'>
 
-            </div>
+        <form action="/recipes/new" method="POST" enctype='multipart/form-data'>
 
             <div>
-                <label for="durationInput">Duration</label>
-                <input id='durationInput' type="text" name='theDuration'>
-            </div>
+                <div>
+                    <label for="titleInput">Title</label>
+                    <input id="titleInput" type="text" name='theTitle'>
 
-            <div>
-                <label for='difficultyInput'>Difficulty</label>
-                <select id='difficultyInput' name='theDifficulty'>
-                    <option value='unspecfied' selected disabled> -- Please select difficulty level -- </option>
-                    <option value='Easy'>Easy</option>
-                    <option value='Hard'>Hard</option>
-                </select>
-                
-            </div>
-            <div>
-                <label for="theInstructions">Instructions</label>
-                <div id="cookingSteps">
-                    <p class="cookingStepsInput"> Step 1: <input name='instructionInput' id='theInstructions' type='text'></p>
                 </div>
 
-                <button id="addStepButton" type='button' name='add-step'>Add a step</button>
+                <div>
+                    <label for="durationInput">Duration</label>
+                    <input id='durationInput' type="text" name='theDuration'>
+                </div>
+
+                <div>
+                    <label for='difficultyInput'>Difficulty</label>
+                    <select id='difficultyInput' name='theDifficulty'>
+                        <option value='unspecfied' selected disabled> -- Please select difficulty level -- </option>
+                        <option value='Easy'>Easy</option>
+                        <option value='Hard'>Hard</option>
+                    </select>
+
+                </div>
+                <div>
+                    <label for="theInstructions">Instructions</label>
+                    <div id="cookingSteps">
+                        {{!-- <p class="cookingStepsInput"> <input name='instructionInput' id='theInstructions'
+                                type='text'></p> --}}
+                    </div>
+
+                    <button id="addStepButton" type='button' name='add-step'>Add a step</button>
+                </div>
+
+
+
+                {{!-- <p>How many steps? <input type='number' name='numOfSteps'></p> --}}
+
+
+
+            </div>
+
+            {{!-- file upload for images needs to be added below --}}
+            <div>
+                <p>Image:</p>
+                <input type="file" name="the-image-input-name">
             </div>
 
 
 
-            {{!-- <p>How many steps? <input type='number' name='numOfSteps'></p> --}}
+            <div>
+                <button type="submit">SAVE</button>
+            </div>
 
-
-
-        </div>
-
-        {{!-- file upload for images needs to be added below --}}
-        <div>
-            <p>Image:</p>
-            <input type="file" name="the-image-input-name">
-        </div>
-
-
-
-        <div>
-            <button type="submit">SAVE</button>
-        </div>
-
-    </form>
+        </form>
+    </div>
 </div>

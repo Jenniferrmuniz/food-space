@@ -1,6 +1,7 @@
 @import url("https://fonts.googleapis.com/css?family=Amatic+SC|Dancing+Script|Josefin+Sans&display=swap");
 body {
   padding-top: 70px;
+  background-color: rgba(217, 217, 217, 0.5);
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
@@ -35,6 +36,11 @@ a {
   text-align: center;
   font-family: 'Amatic SC', cursive;
   font-size: 72px; }
+
+.recipes-wrapper h6 {
+  text-align: center;
+  font-family: 'Amatic SC', cursive;
+  font-size: 32px; }
 
 .recipes-list {
   display: flex;
@@ -229,11 +235,9 @@ a {
   justify-content: space-around; }
 
 .image-div img {
-  background-color: rgba(217, 217, 217, 0.5);
-  padding: 30px;
   height: 250px;
-  -moz-border-radius: 120px;
-  -webkit-border-radius: 120px;
+  border-radius: 120px;
+  border: 10px solid #d9d9d9;
   width: 250px;
   margin: 10px; }
 
@@ -299,11 +303,12 @@ a {
   width: 400px;
   height: 266px; }
 
-.delete-form input {
+.form-button {
   color: red;
   background-color: white;
   border-radius: 8px; }
 
+<<<<<<< HEAD
 .update-wrapper {
   background-color: rgba(251, 90, 117, 0.7);
   margin: 20px;
@@ -330,5 +335,24 @@ a {
 
 .submit-button {
   margin-left: 800px; }
+=======
+.new-wrapper {
+  height: 100vh;
+  display: flex;
+  justify-content: center; }
+
+.add-new {
+  margin-top: 100px;
+  height: 60vh;
+  padding: 50px;
+  border: 1px solid white;
+  border-radius: 8px;
+  background-color: rgba(251, 90, 117, 0.85); }
+
+.add-new form {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-around; }
+>>>>>>> e92fdc9d7f58757a6ac6ea10630e4bd7c4ca359b
 
 /*# sourceMappingURL=style.css.map */
