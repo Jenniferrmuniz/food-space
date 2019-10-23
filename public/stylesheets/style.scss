@@ -11,452 +11,487 @@
 // font-family: 'Josefin Sans', sans-serif;
 
 body {
-  padding-top: 70px;
-  background-color: rgba(217, 217, 217, .5);
-  font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
+	padding-top: 70px;
+	background-color: rgba(217, 217, 217, .5);
+	font: 14px "Lucida Grande", Helvetica, Arial, sans-serif;
 }
 
 a {
-  color: #00B7FF;
+	color: #00b7ff;
 }
 
 .navbar {
-  background-color: rgba($color: #000000, $alpha: .7)
+	background-color: rgba($color: #000000, $alpha: .7);
 }
 
-
 .home {
-  // border: 1px solid red;
-  text-align: center;
-  margin: 250px auto;
-  font-family: 'Dancing Script', cursive;
-  // font-weight: bold;
+	// border: 1px solid red;
+	text-align: center;
+	margin: 250px auto;
+	font-family: 'Dancing Script', cursive;
+	// font-weight: bold;
 }
 
 .home h1 {
-  font-size: 104px;
-  color: rgba($color: #000000, $alpha: .7);
+	font-size: 104px;
+	color: rgba($color: #000000, $alpha: .7);
 }
 
 .background {
-  // background-position: center; /* Center the image */
-  // background-repeat: no-repeat; /* Do not repeat the image */
-  // background-size: cover;
+	// background-position: center; /* Center the image */
+	// background-repeat: no-repeat; /* Do not repeat the image */
+	// background-size: cover;
 
-  /* Set rules to fill background */
-  min-height: 100%;
-  min-width: 1024px;
+	/* Set rules to fill background */
+	min-height: 100%;
+	min-width: 1024px;
 
-  /* Set up proportionate scaling */
-  width: 100%;
-  height: auto;
+	/* Set up proportionate scaling */
+	width: 100%;
+	height: auto;
 
-  /* Set up positioning */
-  position: fixed;
-  top: 0;
-  left: 0;
+	/* Set up positioning */
+	position: fixed;
+	top: 0;
+	left: 0;
 
-  z-index: -5;
+	z-index: -5;
 }
 
 .recipes-wrapper h2 {
-  text-align: center;
-  font-family: 'Amatic SC', cursive;
-  font-size: 72px;
+	text-align: center;
+	font-family: 'Amatic SC', cursive;
+	font-size: 72px;
 }
 
 .recipes-wrapper h6 {
-  text-align: center;
-  font-family: 'Amatic SC', cursive;
-  font-size: 32px;
+	text-align: center;
+	font-family: 'Amatic SC', cursive;
+	font-size: 32px;
 }
 
-
 .recipes-list {
-  // border: 1px solid red;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
+	// border: 1px solid red;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
 }
 
 .recipe-card {
-  // border: 1px solid blue;
-  width: 300px;
-  height: 350px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: rgba($color: rgb(251, 90, 117), $alpha: .7);
-  margin: 16px;
-  border-radius: 16px;
-  text-align: center;
-  color: white;
-  // font-family: 'Josefin Sans', sans-serif;
-  // background-color: 
+	// border: 1px solid blue;
+	width: 300px;
+	height: 350px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	background-color: rgba($color: rgb(251, 90, 117), $alpha: .7);
+	margin: 16px;
+	border-radius: 16px;
+	text-align: center;
+	color: white;
+	// font-family: 'Josefin Sans', sans-serif;
+	// background-color:
 }
 
 .recipe-card h4 {
-  // font: 32px 'Amatic SC', cursive;
-  font: 24px 'Josefin Sans', sans-serif;
+	// font: 32px 'Amatic SC', cursive;
+	font: 24px 'Josefin Sans', sans-serif;
 }
 
 .recipe-card img {
-  width: 80%;
-  height: 160px;
-  border-radius: 8px;
-  border: 1px solid white;
-  box-shadow: 3px 0px 9px 0px rgba($color: #000000, $alpha: .3);
+	width: 80%;
+	height: 160px;
+	border-radius: 8px;
+	border: 1px solid white;
+	box-shadow: 3px 0px 9px 0px rgba($color: #000000, $alpha: .3);
 }
 
 .recipes-list a {
-  color: black;
+	color: black;
 }
 
 .recipes-list a:hover {
-  text-decoration: none;
-  transform: scale(1.05);
-  color: black;
-  transition: .5s ease;
+	text-decoration: none;
+	transform: scale(1.05);
+	color: black;
+	transition: .5s ease;
 }
 
-
 .details-wrapper {
-  margin: 16px;
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  padding: 24px;
-  border-radius: 8px;
-  background-color: rgba($color: rgb(251, 90, 117), $alpha: .85);
-  // background-color: rgba($color: rgb(99, 195, 219), $alpha: .9);
-  color: white;
+	margin: 16px;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	padding: 24px;
+	border-radius: 8px;
+	background-color: rgba($color: rgb(251, 90, 117), $alpha: .85);
+	// background-color: rgba($color: rgb(99, 195, 219), $alpha: .9);
+	color: white;
 }
 
 .details-wrapper img {
-  border-radius: 8px;
-  border: 1px solid white;
-  box-shadow: 3px 0px 9px 0px rgba($color: #000000, $alpha: .3);
+	border-radius: 8px;
+	border: 1px solid white;
+	box-shadow: 3px 0px 9px 0px rgba($color: #000000, $alpha: .3);
 }
 
 .details-wrapper div {
-  margin: 8px;
+	margin: 8px;
 }
 
 .details-text a {
-  color: white;
+	color: white;
 }
 
 .details-text h1 {
-  font-family: 'Amatic SC', cursive;
-  font-size: 48px;
-  margin-bottom: 20px;
+	font-family: 'Amatic SC', cursive;
+	font-size: 48px;
+	margin-bottom: 20px;
 }
 
-.details-text h6, p, li {
-  font-family: 'Josefin Sans', sans-serif;
+.details-text h6,
+p,
+li {
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+.comment-wrapper {
+	// border: .5rem solid purple;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
 }
 
 .comment-box {
-  margin: auto 350px;
+	border: .1rem solid rgba($color: rgb(50, 50, 50), $alpha: .9);
+	border-radius: 8px;
+	background-color: #f3f3f3;
+	background-color: rgba($color: rgb(50, 50, 50), $alpha: .3);
+	width: 50vw;
+	padding: 1rem;
+	display: flex;
+	flex-direction: column;
+	// align-items: center;
+	// justify-content: space-around;
+}
+
+.comment-box h3 {
+	font-family: 'Amatic SC', cursive;
+	font-size: 40px;
+	text-align: center;
+	color: white;
+}
+
+.comment-button {
+	display: flex;
+	justify-content: flex-end;
+	padding: .5rem;
+}
+
+.comment-button > input {
+	color: rgba(251, 90, 117, .7);
+	border: .05rem solid rgba(251, 90, 117, .7);
+	background-color: white;
+	border-radius: .5rem;
+	padding: .3rem;
+	font-family: 'Josefin Sans', sans-serif;
+}
+
+.comment-button > input:hover {
+	color: white;
+	border: .05rem solid white;
+	background-color: rgba(251, 90, 117, 1);
+	border-radius: .5rem;
+	padding: .3rem;
 }
 
 .comments {
-  text-align: left;
-  border-radius: 8px;
-  // border: 1px solid red;
-  background-color: rgba($color: rgb(72, 74, 75), $alpha: .6);
-  color: white;
-  padding: 15px;
+	text-align: left;
+	border-radius: 8px;
+	// border: 1px solid red;
+	background-color: rgba($color: rgb(72, 74, 75), $alpha: .6);
+	color: white;
+	padding: 15px;
 }
 
 .comment-user {
-  color: rgb(0, 247, 255);
+	color: rgb(0, 247, 255);
 }
 
 #signup-form {
-  margin: 170px auto 0px;
-  width: 380px;
+	margin: 170px auto 0px;
+	width: 380px;
 }
 
 #signup-form label {
-  color: #666;
-  display: inline-block;
-  margin-bottom: 10px;
-  // text-align: center;
-  width: 100%;
+	color: #666;
+	display: inline-block;
+	margin-bottom: 10px;
+	// text-align: center;
+	width: 100%;
 }
 
 #signup-form input,
 #signup-form button {
-  box-sizing: border-box;
-  font-size: 14px;
-  outline: 0;
-  padding: 4px;
-  width: 100%;
-  margin-bottom: 20px;
+	box-sizing: border-box;
+	font-size: 14px;
+	outline: 0;
+	padding: 4px;
+	width: 100%;
+	margin-bottom: 20px;
 }
 
 #signup-form button {
-  background: #43a3e6;
-  border: 1px solid #43a3e6;
-  border-radius: 4px;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 14px;
-  padding: 8px 16px;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: .3s ease background;
-  width: 100%;
+	background: #43a3e6;
+	border: 1px solid #43a3e6;
+	border-radius: 4px;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 14px;
+	padding: 8px 16px;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: .3s ease background;
+	width: 100%;
 }
 
 #signup-form button:hover {
-  background: #fff;
-  color: #43a3e6;
-  transition: .3s ease background;
+	background: #fff;
+	color: #43a3e6;
+	transition: .3s ease background;
 }
 
 #login-form {
-  margin: 175px auto 0px;
-  width: 380px;
+	margin: 175px auto 0px;
+	width: 380px;
 }
 
 #login-form label {
-  // color: #666;
-  display: inline-block;
-  margin-bottom: 10px;
-  text-align: center;
-  width: 100%;
-  color: rgba($color: #000000, $alpha: .7);
+	// color: #666;
+	display: inline-block;
+	margin-bottom: 10px;
+	text-align: center;
+	width: 100%;
+	color: rgba($color: #000000, $alpha: .7);
 }
 
 #login-form input,
 #login-form button {
-  box-sizing: border-box;
-  font-size: 14px;
-  outline: 0;
-  padding: 4px;
-  width: 100%;
-  margin-bottom: 20px;
+	box-sizing: border-box;
+	font-size: 14px;
+	outline: 0;
+	padding: 4px;
+	width: 100%;
+	margin-bottom: 20px;
 }
 
 #login-form button {
-  background: #43a3e6;
-  border: 1px solid #43a3e6;
-  border-radius: 4px;
-  color: #fff;
-  cursor: pointer;
-  display: inline-block;
-  font-size: 14px;
-  padding: 8px 16px;
-  text-decoration: none;
-  text-transform: uppercase;
-  transition: .3s ease background;
-  width: 100%;
+	background: #43a3e6;
+	border: 1px solid #43a3e6;
+	border-radius: 4px;
+	color: #fff;
+	cursor: pointer;
+	display: inline-block;
+	font-size: 14px;
+	padding: 8px 16px;
+	text-decoration: none;
+	text-transform: uppercase;
+	transition: .3s ease background;
+	width: 100%;
 }
 
 #login-form button:hover {
-  background: #fff;
-  color: #43a3e6;
-  transition: .3s ease background;
+	background: #fff;
+	color: #43a3e6;
+	transition: .3s ease background;
 }
 
 .welcome h1 {
-  font-size: 96px;
-  font-family: 'Dancing Script', cursive;
-  text-align: center;
+	font-size: 96px;
+	font-family: 'Dancing Script', cursive;
+	text-align: center;
 }
 
 .upload-section {
-  display: flex;
-  flex-wrap: wrap;
+	display: flex;
+	flex-wrap: wrap;
 }
 
 .profile-wrapper {
-  margin-top: 18px;
-  display: flex;
-  justify-content: space-around;
-  flex-direction: column;
-  height: 90%;
+	margin-top: 18px;
+	display: flex;
+	justify-content: space-around;
+	flex-direction: column;
+	height: 90%;
 }
 
-
-.profile-card{
-  display:flex;
-  flex-direction: row;
-  justify-content: space-around;
-  height: 300px;
-  margin-top: 20px;
-  width: 100%;
+.profile-card {
+	display: flex;
+	flex-direction: row;
+	justify-content: space-around;
+	height: 300px;
+	margin-top: 20px;
+	width: 100%;
 }
 
-.image-div{
-  display:flex;
-  flex-direction: column;
-  justify-content: space-around;
-  margin: 70px;
+.image-div {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	margin: 70px;
 }
 
-.image-div form{
-  display:flex;
-  flex-direction: column;
-  justify-content: space-around;
+.image-div form {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
 }
 
-.image-div img{
-  // background-color: rgba(217, 217, 217, .5);
-  // padding: 30px;
-  height: 250px;
-  // -moz-border-radius: 120px;
-  // -webkit-border-radius: 120px;
-  border-radius: 120px;
-  border: 10px solid rgba(217, 217, 217, 7);
-  width: 250px;
-  margin: 10px;
+.image-div img {
+	// background-color: rgba(217, 217, 217, .5);
+	// padding: 30px;
+	height: 250px;
+	// -moz-border-radius: 120px;
+	// -webkit-border-radius: 120px;
+	border-radius: 120px;
+	border: 10px solid rgba(217, 217, 217, 7);
+	width: 250px;
+	margin: 10px;
 }
 
-
-.profile-info{
-  display:flex;
-  flex-direction: column;
-  justify-content: space-around;
+.profile-info {
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
 }
 
-.profile-info a{
-  color: rgba($color: rgb(251, 90, 117), $alpha: .7);
+.profile-info a {
+	color: rgba($color: rgb(251, 90, 117), $alpha: .7);
 }
 
-.profile-info a:hover{
-  color: rgba($color: rgb(251, 90, 117), $alpha: .7);
+.profile-info a:hover {
+	color: rgba($color: rgb(251, 90, 117), $alpha: .7);
 }
-
-
-
 
 .profile-recipes-list {
-  display: flex;
-  justify-content: space-around;
-  align-items: center;
-  flex-wrap: wrap;
+	display: flex;
+	justify-content: space-around;
+	align-items: center;
+	flex-wrap: wrap;
 }
 
-.profile-body{
-  padding: 10px 200px;
-  background-color: rgba(217, 217, 217, .5);
-  display:flex;
-  flex-direction: column;
-  justify-content: space-around;
-  align-items: center;
-  margin: 45px 10px 10px 10px;
+.profile-body {
+	padding: 10px 200px;
+	background-color: rgba(217, 217, 217, .5);
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
+	align-items: center;
+	margin: 45px 10px 10px 10px;
 }
 
 .profile-recipe-card {
-  width: 200px;
-  height: 250px;
-  display: flex;
-  flex-direction: column;
-  justify-content: space-evenly;
-  align-items: center;
-  background-color: rgba($color: rgb(251, 90, 117), $alpha: .7);
-  margin: 16px;
-  border-radius: 16px;
-  text-align: center;
-  color: white;
+	width: 200px;
+	height: 250px;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-evenly;
+	align-items: center;
+	background-color: rgba($color: rgb(251, 90, 117), $alpha: .7);
+	margin: 16px;
+	border-radius: 16px;
+	text-align: center;
+	color: white;
 }
 
 .profile-recipe-card h4 {
-  font: 24px 'Josefin Sans', sans-serif;
+	font: 24px 'Josefin Sans', sans-serif;
 }
 
 .profile-recipe-card img {
-  width: 75%;
-  height: 80px;
-  border-radius: 8px;
-  border: 1px solid white;
-  box-shadow: 3px 0px 9px 0px rgba($color: #000000, $alpha: .3);
+	width: 75%;
+	height: 80px;
+	border-radius: 8px;
+	border: 1px solid white;
+	box-shadow: 3px 0px 9px 0px rgba($color: #000000, $alpha: .3);
 }
 
 .profile-recipes-list a {
-  color: black;
+	color: black;
 }
 
 .profile-recipes-list a:hover {
-  text-decoration: none;
-  transform: scale(1.05);
-  color: black;
-  transition: .5s ease;
+	text-decoration: none;
+	transform: scale(1.05);
+	color: black;
+	transition: .5s ease;
 }
 
-
-.details-image img{
-  width: 400px;
-  height: 266px;
+.details-image img {
+	width: 400px;
+	height: 266px;
 }
 
 .form-button {
-  color: red;
-  background-color: white;
-  border-radius: 8px;
+	color: red;
+	background-color: white;
+	border-radius: 8px;
 }
 
-
-
-.update-wrapper{
-  background-color: rgba($color: rgb(251, 90, 117), $alpha: .7);
-  margin: 20px;
-  display:flex;
+.update-wrapper {
+	background-color: rgba($color: rgb(251, 90, 117), $alpha: .7);
+	margin: 20px;
+	display: flex;
 }
 
-.update-wrapper h1{
-  margin: 10px;
+.update-wrapper h1 {
+	margin: 10px;
 }
 
-
-.update-recipe{
-  display:flex;
-  flex-direction: column;
-  padding: 15px;
+.update-recipe {
+	display: flex;
+	flex-direction: column;
+	padding: 15px;
 }
 
-.update-recipe-info{
-  display:flex;
-  flex-direction: row;
-  flex-wrap: wrap;
-  justify-content: space-around;
-  align-items: center;
-  align-content: center;
+.update-recipe-info {
+	display: flex;
+	flex-direction: row;
+	flex-wrap: wrap;
+	justify-content: space-around;
+	align-items: center;
+	align-content: center;
 }
 
-.update-recipe-info div{
-  margin: 30px 80px;
+.update-recipe-info div {
+	margin: 30px 80px;
 }
 
-.submit-button{
-  margin-left: 800px;
+.submit-button {
+	margin-left: 800px;
 }
 .new-wrapper {
-  // border: 1px solid red;
-  height: 100vh;
-  display: flex;
-  justify-content: center;
-  // background-color: rgba(217, 217, 217, .5);
+	// border: 1px solid red;
+	height: 100vh;
+	display: flex;
+	justify-content: center;
+	// background-color: rgba(217, 217, 217, .5);
 }
 
 .add-new {
-  margin-top: 100px;
-  height: 60vh;
-  padding: 50px;
-  border: 1px solid white;
-  border-radius: 8px;
-  background-color: rgba($color: rgb(251, 90, 117), $alpha: .85);
+	margin-top: 100px;
+	height: 60vh;
+	padding: 50px;
+	border: 1px solid white;
+	border-radius: 8px;
+	background-color: rgba($color: rgb(251, 90, 117), $alpha: .85);
 }
 
 .add-new form {
-  display: flex;
-  flex-direction: column;
-  justify-content: space-around;
+	display: flex;
+	flex-direction: column;
+	justify-content: space-around;
 }
-

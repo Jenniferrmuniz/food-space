@@ -5,7 +5,7 @@ body {
   font: 14px "Lucida Grande", Helvetica, Arial, sans-serif; }
 
 a {
-  color: #00B7FF; }
+  color: #00b7ff; }
 
 .navbar {
   background-color: rgba(0, 0, 0, 0.7); }
@@ -106,11 +106,51 @@ a {
   font-size: 48px;
   margin-bottom: 20px; }
 
-.details-text h6, p, li {
+.details-text h6,
+p,
+li {
   font-family: 'Josefin Sans', sans-serif; }
 
+.comment-wrapper {
+  display: flex;
+  flex-direction: column;
+  align-items: center; }
+
 .comment-box {
-  margin: auto 350px; }
+  border: 0.1rem solid rgba(50, 50, 50, 0.9);
+  border-radius: 8px;
+  background-color: #f3f3f3;
+  background-color: rgba(50, 50, 50, 0.3);
+  width: 50vw;
+  padding: 1rem;
+  display: flex;
+  flex-direction: column; }
+
+.comment-box h3 {
+  font-family: 'Amatic SC', cursive;
+  font-size: 40px;
+  text-align: center;
+  color: white; }
+
+.comment-button {
+  display: flex;
+  justify-content: flex-end;
+  padding: .5rem; }
+
+.comment-button > input {
+  color: rgba(251, 90, 117, 0.7);
+  border: 0.05rem solid rgba(251, 90, 117, 0.7);
+  background-color: white;
+  border-radius: .5rem;
+  padding: .3rem;
+  font-family: 'Josefin Sans', sans-serif; }
+
+.comment-button > input:hover {
+  color: white;
+  border: .05rem solid white;
+  background-color: #fb5a75;
+  border-radius: .5rem;
+  padding: .3rem; }
 
 .comments {
   text-align: left;
