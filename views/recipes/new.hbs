@@ -8,18 +8,18 @@
 
             <div>
                 <div>
-                    <label for="titleInput">Title</label>
+                    <h6>Title:</h6>
                     <input id="titleInput" type="text" name='theTitle'>
-
                 </div>
 
                 <div>
-                    <label for="durationInput">Duration</label>
+                    <h6>Duration:</h6>
                     <input id='durationInput' type="text" name='theDuration'>
                 </div>
 
                 <div>
-                    <label for='difficultyInput'>Difficulty</label>
+                    {{!-- <label for='difficultyInput'>Difficulty</label> --}}
+                    <h6>Difficulty:</h6>
                     <select id='difficultyInput' name='theDifficulty'>
                         <option value='unspecfied' selected disabled> -- Please select difficulty level -- </option>
                         <option value='Easy'>Easy</option>
@@ -28,7 +28,7 @@
 
                 </div>
                 <div>
-                    <label for="theInstructions">Instructions</label>
+                    <h6>Instructions:</h6>
                     <div id="cookingSteps">
                         {{!-- <p class="cookingStepsInput"> <input name='instructionInput' id='theInstructions'
                                 type='text'></p> --}}
@@ -47,13 +47,13 @@
 
             {{!-- file upload for images needs to be added below --}}
             <div>
-                <p>Image:</p>
+                <h6>Image:</h6>
                 <input type="file" name="the-image-input-name">
             </div>
 
 
 
-            <div>
+            <div class="save-button">
                 <button type="submit">SAVE</button>
             </div>
 

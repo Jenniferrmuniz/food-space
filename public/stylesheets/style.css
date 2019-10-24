@@ -142,7 +142,7 @@ li {
   border: 0.05rem solid rgba(251, 90, 117, 0.7);
   background-color: white;
   border-radius: .5rem;
-  padding: .3rem;
+  padding: .4rem;
   font-family: 'Josefin Sans', sans-serif; }
 
 .comment-button > input:hover {
@@ -150,7 +150,7 @@ li {
   border: .05rem solid white;
   background-color: #fb5a75;
   border-radius: .5rem;
-  padding: .3rem; }
+  padding: .4rem; }
 
 .comments {
   text-align: left;
@@ -376,21 +376,33 @@ li {
   margin-left: 800px; }
 
 .new-wrapper {
-  height: 100vh;
   display: flex;
   justify-content: center; }
 
 .add-new {
-  margin-top: 100px;
-  height: 60vh;
-  padding: 50px;
+  margin-top: 4rem;
+  padding: 3rem;
   border: 1px solid white;
   border-radius: 8px;
   background-color: rgba(251, 90, 117, 0.85); }
 
-.add-new form {
+.add-new > form div {
   display: flex;
   flex-direction: column;
-  justify-content: space-around; }
+  justify-content: space-around;
+  padding: .3rem; }
+
+.save-button {
+  display: flex;
+  align-items: center; }
+
+.save-button > button {
+  color: rgba(251, 90, 117, 0.7);
+  border: 0.05rem solid rgba(251, 90, 117, 0.7);
+  background-color: white;
+  border-radius: .5rem;
+  padding: .4rem;
+  width: 6rem;
+  font-family: 'Josefin Sans', sans-serif; }
 
 /*# sourceMappingURL=style.css.map */
