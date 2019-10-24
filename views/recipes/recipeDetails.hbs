@@ -71,23 +71,28 @@
   <label for="comment">Comment:</label>
   <textarea class="form-control" rows="5" id="comment"></textarea>
 </div> --}}
+<div class="comment-wrapper">
+    {{#if theUser}}
+    <div class='comment-box'>
+        <h3>Leave a Comment!</h3>
+        <form action='/comments/recipe/{{recipe._id}}' method='POST'>
+            <textarea class="form-control" rows="5" id="comment" name='theComment'></textarea>
+            {{!-- <input type='text' name='theComment'> --}}
+            <input type='hidden' name='theAuthor' value='{{theUser._id}}'>
+            <input type='hidden' name='theRecipe' value='{{recipe._id}}'>
+            <div class='comment-button'>
+            <input  type="submit" value="Submit Comment">
+            </div>
+            {{!-- <button type='submit'>Submit comment</button> --}}
+        </form>
 
-{{#if theUser}}
-<div class='comment-box'>
-    <form action='/comments/recipe/{{recipe._id}}' method='POST'>
-        <textarea class="form-control" rows="5" id="comment" name='theComment'></textarea>
-        {{!-- <input type='text' name='theComment'> --}}
-        <input type='hidden' name='theAuthor' value='{{theUser._id}}'>
-        <input type='hidden' name='theRecipe' value='{{recipe._id}}'>
-        <input class='form-button' type="submit" value="Submit Comment">
-        {{!-- <button type='submit'>Submit comment</button> --}}
-    </form>
-
-    <div class='comments'>
-        {{#each comments}}
-        {{!-- <p>{{this.comment}}</p> --}}
-        <p> <a class='comment-user' href='/user/{{this.author._id}}'>{{this.author.username}} </a> {{this.comment}} </p>
-        {{/each}}
+        <div class='comments'>
+            {{#each comments}}
+            {{!-- <p>{{this.comment}}</p> --}}
+            <p> <a class='comment-user' href='/user/{{this.author._id}}'>{{this.author.username}} </a> {{this.comment}} </p>
+            {{/each}}
+        </div>
     </div>
+    {{/if}}
 </div>
-{{/if}}
+
