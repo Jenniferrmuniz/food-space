@@ -1,7 +1,5 @@
 
 
-// import { log } from "util";
-
 document.addEventListener('DOMContentLoaded', () => {
 
   console.log('IronGenerator JS imported successfully!');
